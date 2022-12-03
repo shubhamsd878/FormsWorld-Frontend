@@ -1,0 +1,30 @@
+*{
+    /* : 100%; */
+    
+}
+.App{
+    min-width: 100vw;
+    min-height: 100vh !important;
+}
+.custom-display{
+    position: fixed;
+    top:auto;
+    left: 27rem ;    
+    width: 31.5rem;
+}
+.btn-service-know-more{
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    color: whitesmoke;
+    /* background-color: #ff009d; */
+    background-color: #151518;
+}
+.btn-service-know-more:hover{
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    color: black;
+    /* color: whitesmoke; */
+    background-color: #ffc400;
+    /* background-color: #ff009d; */
+    /* background-color: #151518; */
+}
