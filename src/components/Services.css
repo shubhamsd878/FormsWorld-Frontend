@@ -1,7 +1,7 @@
 /* basic setup */
 .services{
     background-color: #151518;
-    /* height: 100%; */
+    min-height: 89.2vh;
     height:fit-content;
     /* color:whitesmoke; */
     /* font-family: "Open Sans", sans-serif; */

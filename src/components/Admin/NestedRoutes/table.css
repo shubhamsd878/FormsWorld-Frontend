@@ -1,0 +1,14 @@
+table, th, td{
+    border: 1px solid black;
+}
+th{
+    /* padding:10px 4vw; */
+    min-width: 5vw;
+}
+th, td{
+    padding: 5px;
+    text-align: center;
+}
+table{
+    /* border-radius: 20px; */ /* --> not working*/ 
+}

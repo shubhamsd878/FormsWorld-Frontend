@@ -2,6 +2,11 @@ import React, {useState} from 'react'
 
 const Signup = () => {
     
+    const [emailVerfied, setEmailVerfied] = useState(false)
+    const [numberVerfied, setNumberVerfied] = useState(false)
+
+    const [emailOtp, setEmailOtp] = useState()
+    const [numberOtp, setNumberOtp] = useState()
 
     const closeNav = () => {
         document.getElementById("mySideNavSignUp").style.width = "0px";
@@ -46,24 +51,74 @@ const Signup = () => {
         else
         document.getElementById('result').innerHTML = "Enter valid Details" 
 
-
 	}
+
+
+    const sendEmailOtp = async (e) => {
+        e.preventDefault()
+
+        console.log('inside sending Email otp')
+
+        let response = await fetch('http://localhost:3001/otp/email', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email
+            })
+        })
+
+        response = await response.json()
+        console.log( 'otp response: ' + JSON.stringify(response) )
+    }
+
+
+    // --- function is not working due the reason that fast2sms api need 100rs recharge
+    const sendPhoneOtp = async(e) => {
+        e.preventDefault()
+
+        let response = await fetch('http://localhost:3001', {
+            method: 'POST',
+            body: JSON.stringify({
+                phone: number
+            })
+        })
+
+        response = await response.json()
+        console.log( JSON.stringify( response ) )
+        
+    }
+
+
+
 
   return (
     <div>
         <div id="mySideNavSignUp" className="sidenav">
                 <a className="closebtn formD" onClick={closeNav}>&times;</a>
                 
-                <form onSubmit={registerUser} className="formD flex-row">                
+                {/* <form onSubmit={registerUser} className="formD flex-row">                 */}
+                <form className="formD flex-row">                
                     
                     <p className="sideNavSignup_form_text" >Name: </p>
                     <input className="sideNavSignup_form_text inputField" type="text" name='name'  onChange={(e) => {setName(e.target.value); console.log(e.target.value)}}/>
 
                     <p className="sideNavSignup_form_text" >eMail: </p>
                     <input className="sideNavSignup_form_text inputField" type="email" name='email' onChange={(e) => {setEmail(e.target.value); console.log(e.target.value)}}/>
+                    
+                    <button onClick={sendEmailOtp}>send otp</button>
+                    <p className="sideNavSignup_form_text" >Otp </p>
+                    <input className="sideNavSignup_form_text inputField" type="number" name='otp' onChange={(e) => {setEmailOtp(e.target.value)}}/>
+
 
                     <p className="sideNavSignup_form_text" >Phone_No.: </p>
                     <input className="sideNavSignup_form_text inputField" type="number" name='number' onChange={(e) => {setNumber(e.target.value); console.log(e.target.value)}}/>
+
+                    <button onClick={sendPhoneOtp}>send otp</button>
+                    <p className="sideNavSignup_form_text" >Otp </p>
+                    <input className="sideNavSignup_form_text inputField" type="number" name='otp' onChange={(e) => {setNumberOtp(e.target.value)}}/>
+
 
                     <p className="sideNavSignup_form_text" >Password: </p>
                     <input className="sideNavSignup_form_text inputField" type="password" name='password' onChange={(e) => {setPassword(e.target.value); console.log(e.target.value)}}/>

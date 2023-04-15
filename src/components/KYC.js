@@ -1,89 +1,174 @@
-import { set } from 'mongoose';
 import React, {useState} from 'react'
+import * as imageConversion from 'image-conversion';
 
 const KYC = () => {
   
   let formData = new FormData();
 
 
-  const [username, setUsername] = useState("")
-  const [userAadhar, setUserAadhar] = useState()
-  const [fathername, setFathername] = useState()
-  const [mothername, setMothername] = useState()
-  const [famliyId, setFamilyId] = useState()
-  const [passportimage, setPassportimage] = useState()
-  const [signatureImage, setSignatureImage] = useState()
-  const [tenthMarksheet, setTenthMarksheet] = useState()
-  const [twelfthMarksheet, setTwelfthhMarksheet] = useState()
-  const [domicile, setDomicile] = useState()
-  const [casteCertificate, setCasteCertificate] = useState()
-  const [leftThumb, setLeftThumb] = useState()
-  const [rightThumb, setRightThumb] = useState()
+  const [full_name, setFull_name] = useState("")
+  const [aadhar_no, setAadhar_no] = useState()
+  const [fathers_name, Fathers_name] = useState()
+  const [mothers_name, setMothers_name] = useState()
+  const [family_id, setFamily_id] = useState()
+  const [passport_image, setPassport_image] = useState()
+  const [signature_image, setSignature_image] = useState()
+  const [marksheet_10th, setMarksheet_10th] = useState()
+  const [marksheet_12th, setMarksheet_12th] = useState()
+  const [domicile_image, setDomicile_image] = useState()
+  const [caste_certificate, setCaste_certificate] = useState()
+  const [left_thumb, setLeft_thumb] = useState()
+  const [right_thumb, setRight_thumb] = useState()
   
   const handleChange = (e) => {
 
-    switch (e.targer.name) {
-      case 'username':
-        setUsername(e.target.value)
+    switch (e.target.name) {
+      case 'full_name':
+        setFull_name(e.target.value)
         
         break;
 
-      case 'userAadhar':
-        setUserAadhar(e.target.value)
+      case 'aadhar_no':
+        setAadhar_no(e.target.value)
           
         break;
 
-      case 'fathername':
-        setFathername(e.target.value)
+      case 'fathers_name':
+        Fathers_name(e.target.value)
             
         break;
       
-      case 'mothername':
-        setMothername(e.target.value)
+      case 'mothers_name':
+        setMothers_name(e.target.value)
         
         break;
 
       case 'familyId':
-        setFamilyId(e.target.value)
+        setFamily_id(e.target.value)
         
       break;
 
-      case 'passportImage':
-        setPassportimage(e.target.files[0])
-        
-        break;
-      
-        case 'signatureImage':
-          setSignatureImage(e.target.files[0])
-          
-          break;
+      // image files
+      case 'passportImage':{
 
-        case 'tenthMarksheet':
-          setTenthMarksheet(e.target.files[0])
+        let file = e.target.files[0]
+        
+        imageConversion.compressAccurately(file,250).then(res=>{
+          //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+          // converting blob to file
+          res = new File([res], "file_name");
+          
+          setPassport_image(res)
+        })
+        
+        break;
+      }
+        
+        case 'signature_image':{
+
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setSignature_image(res)
+          })
           
           break;
+        }
+
+        case 'marksheet_10th':{
+
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setMarksheet_10th(res)
+          })
+          
+          break;
+        }
+          // setMarksheet_10th(e.target.files[0])
+          
+          // break;
         
-        case 'twelfthMarksheet':
-          setTwelfthhMarksheet(e.target.files[0])
+        case 'marksheet_12th':{
+
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setMarksheet_10th(res)
+          })
+          
+          break;
+        }
         
-        break;
       
-        case 'domicileImage':
-          setDomicile(e.target.files[0])
+        case 'domicileImage':{
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setDomicile_image(res)
+          })
+          
+          break;
+        }
         
-        break;
-        case 'casteCertificate':
-          setCasteCertificate(e.target.files[0])
-        
-        break;
-        case 'leftThumb':
-          setLeftThumb(e.target.files[0])
-        
-        break;
-        case 'rightThumb':
-          setRightThumb(e.target.files[0])
-        
-        break;
+        case 'caste_certificate':{
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setCaste_certificate(res)
+          })
+          
+          break;
+        }
+
+
+        case 'left_thumb':{
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setLeft_thumb(res)
+          })
+          
+          break;
+        }
+
+        case 'right_thumb':{
+          let file = e.target.files[0]
+          
+          imageConversion.compressAccurately(file,250).then(res=>{
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            // converting blob to file
+            res = new File([res], "file_name");
+            
+            setRight_thumb(res)
+          })
+          
+          break;
+        }
         
     
       default:
@@ -98,26 +183,26 @@ const KYC = () => {
   const kycsubmit = async (e) =>{
     e.preventDefault();
 
-    formData.append("username", username);
-    formData.append("userAadhar", userAadhar);
-    formData.append("fathername", fathername);
-    formData.append("mothername", mothername);
-    formData.append("famliyId", famliyId);
-    formData.append("passportimage", passportimage);
-    formData.append("signatureImage", signatureImage);
-    formData.append("tenthMarksheet", tenthMarksheet);
-    formData.append("twelfthMarksheet", twelfthMarksheet);
-    formData.append("domicile", domicile);
-    formData.append("casteCertificate", casteCertificate);
-    formData.append("leftThumb", leftThumb);
-    formData.append("rightThumb", rightThumb);
+    formData.append("full_name", full_name);
+    formData.append("aadhar_no", aadhar_no);
+    formData.append("fathers_name", fathers_name);
+    formData.append("mothers_name", mothers_name);
+    formData.append("family_id", family_id);
+    formData.append("passport_image", passport_image);
+    formData.append("signature_image", signature_image);
+    formData.append("marksheet_10th", marksheet_10th);
+    formData.append("marksheet_12th", marksheet_12th);
+    formData.append("domicile_image", domicile_image);
+    formData.append("caste_certificate", caste_certificate);
+    formData.append("left_thumb", left_thumb);
+    formData.append("right_thumb", right_thumb);
     
 
     console.log( formData)
 
     const response = await fetch('http://localhost:3001/kyc', {
 			method: 'POST',                         
-			headers: {},
+			headers: {token: localStorage.getItem('token')},
       body: formData
       
 			// body: JSON.stringify( formState )
@@ -136,31 +221,31 @@ const KYC = () => {
           <legend>KYC:</legend>
 
           <label>Full Name as per Aadhar: &nbsp; </label>
-          <input type='text' name='username' onChange = {handleChange}></input>
+          <input type='text' name='full_name' onChange = {handleChange}></input>
 
           &emsp;
           &emsp;
           
           <label>Your Aadhar Card No.: &nbsp; </label>
-          <input type='Number' name='userAadhar' onChange = {handleChange}></input>
+          <input type='Number' name='aadhar_no' onChange = {handleChange}></input>
 
           <br/>
           <br/>
 
           <label>Father's Name as per Aadhar: &nbsp; </label>
-          <input type='text' name='fathername' onChange = {handleChange}></input>
+          <input type='text' name='fathers_name' onChange = {handleChange}></input>
 
           &emsp;
           &emsp;
 
           <label>Mother's Name as per Aadhar: &nbsp; </label>
-          <input type='text' name='mothername' onChange = {handleChange}></input>
+          <input type='text' name='mothers_name' onChange = {handleChange}></input>
 
           <br/>
           <br/>
 
           <label>Enter Family Id: &nbsp; </label>
-          <input type='Number' name='familyId' onChange = {handleChange}></input>
+          <input type='text' name='familyId' onChange = {handleChange}></input>
 
           <br/>
           <br/>
@@ -169,16 +254,16 @@ const KYC = () => {
           <input type='file' name='passportImage' onChange = {handleChange}></input>
 
           <label>Signature image: &nbsp; </label>
-          <input type='file' name='signatureImage' onChange = {handleChange}></input>
+          <input type='file' name='signature_image' onChange = {handleChange}></input>
           
           <br/>
           <br/>
 
           <label>10th Marksheet: &nbsp; </label>
-          <input type='file' name='tenthMarksheet' onChange = {handleChange}></input>
+          <input type='file' name='marksheet_10th' onChange = {handleChange}></input>
 
           <label>12th Marksheet: &nbsp; </label>
-          <input type='file' name='twelfthMarksheet' onChange = {handleChange}></input>
+          <input type='file' name='marksheet_12th' onChange = {handleChange}></input>
 
           <br/>
           <br/>
@@ -187,16 +272,16 @@ const KYC = () => {
           <input type='file' name='domicileImage' onChange = {handleChange}></input>
 
           <label> Caste Certificate <i>&#40; if applicable &#41;</i>: &nbsp; </label>
-          <input type='file' name='casteCertificate' onChange = {handleChange}></input>
+          <input type='file' name='caste_certificate' onChange = {handleChange}></input>
 
           <br/>
           <br/>
 
           <label> Candidate's Left Thumb Impression: &nbsp; </label>
-          <input type='file' name='leftThumb' onChange = {handleChange}></input>
+          <input type='file' name='left_thumb' onChange = {handleChange}></input>
 
           <label> Candidate's Right Thumb Impression: &nbsp; </label>
-          <input type='file' name='rightThumb' onChange = {handleChange}></input>
+          <input type='file' name='right_thumb' onChange = {handleChange}></input>
 
           <br/>
           <br/>

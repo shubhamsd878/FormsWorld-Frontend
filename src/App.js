@@ -4,27 +4,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from'./components/Navbar'
 import Services from './components/Services.js';
 import './App.css'
-import { useState } from 'react/cjs/react.production.min';
-import {ContextCreator} from './context-api/ContextCreator';
+// import {ContextCreator} from './context-api/ContextCreator';
 import KYC from './components/KYC';
 import Admin from './components/Admin';
+import SignupLogin from './components/home/SignupLogin/SignupLogin';
 
 
 function App() {
-  const token = localStorage.getItem('token')  
-  
+  // const token = localStorage.getItem('token')    
+
 
   return (
     
-    <ContextCreator.Provider value = {{token}}>
+    // <ContextCreator.Provider value = {{token}}>
       <div className="App">
-          <div id="main" >
-            {/* if - else */}
-            {/* {  window.location.pathname == '/admin' ? 
-              (<Admin />) : */}
-              
+          {/* <div id="main" >               */}
             
             <BrowserRouter>
+            <SignupLogin />                {/* for hovering signup and login */}
               <Routes>
                 <Route path='/admin/*' element={<Admin />} />
                 
@@ -36,11 +33,10 @@ function App() {
                 </Route>
               </Routes>
             </BrowserRouter>
-          {/* } */}
-          </div>
+          {/* </div> */}
 
       </div>
-    </ContextCreator.Provider>
+    // </ContextCreator.Provider>
   );
 }
 

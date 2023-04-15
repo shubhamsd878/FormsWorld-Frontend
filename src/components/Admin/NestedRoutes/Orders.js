@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Orders_tablerow from './Orders/Orders_tablerow'
 
 const Orders = () => {
   // ---------- fetching orders ----------
@@ -18,7 +19,7 @@ const Orders = () => {
     fetc()
   }, [])
 
-  let arr = [1, 2, 3, 4]
+  
 
   return (
     <div>
@@ -27,21 +28,20 @@ const Orders = () => {
       <table>
         <tr>
           <th>uid</th>
+          <th>email</th>
           <th>form_id</th>
-          <th>dateTime</th>
+          <th>Applying dateTime</th>
           <th>payment</th>
+          <th>Whatsapp_Phone---remaining</th>
         </tr>
         {orders.map(e =>
-          <tr>
-            <td>{e.uid}</td>
-            <td>{e.form_id}</td>
-            <td>{e.dateTime}</td>
-            <td>{e.payment_done? 'true' : 'false'}</td>
-          </tr>
+          <Orders_tablerow key={e._id} dateTime={e.dateTime} payment_done={e.payment_done} 
+            uid={e.uid._id} name={e.uid.name} email={e.uid.email} 
+            form_id={e.form_id._id} form_title={e.form_id.title} />
         )}
 
       </table>
-      {/* {arr.map(i=> i)} */}
+
     </div>
   )
 }

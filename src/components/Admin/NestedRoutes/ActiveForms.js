@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ActiveForms.css'
 import TableRow from './ActiveForms/TableRow'
+import './table.css'
 
 const ActiveForms = () => {
 

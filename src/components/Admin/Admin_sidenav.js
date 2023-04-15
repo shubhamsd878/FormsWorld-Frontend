@@ -48,7 +48,7 @@ const Admin_sidenav = () => {
 
                                 <li className='admin_sidenav'>
                                     <Link to="/admin/activeForms">
-                                        <i className='bx bx-user' ></i>
+                                        <i class='bx bxs-file'></i>
                                         <span className="links_name">Active Forms</span>
                                     </Link>
                                     <span className="tooltip">Active Forms</span>
@@ -56,15 +56,15 @@ const Admin_sidenav = () => {
 
                                 <li className='admin_sidenav'>
                                     <Link to="/admin/orders">
-                                        <i className='bx bx-chat' ></i>
-                                        <span className="links_name">Ordres</span>
+                                        <i className='bx bx-cart-alt' ></i>
+                                        <span className="links_name">Orders</span>
                                     </Link>
                                     <span className="tooltip">Orders</span>
                                 </li>
 
                                 <li className='admin_sidenav'>
                                     <Link to="/admin/users">
-                                        <i className='bx bx-pie-chart-alt-2' ></i>
+                                        <i className='bx bx-user' ></i>
                                         <span className="links_name">Users</span>
                                     </Link>
                                     <span className="tooltip">Users</span>
@@ -80,8 +80,8 @@ const Admin_sidenav = () => {
 
                                 <li className='admin_sidenav'>
                                     <Link to="#">
-                                        <i className='bx bx-cart-alt' ></i>
-                                        <span className="links_name">Order</span>
+                                        <i className='bx bx-chat' ></i>
+                                        <span className="links_name">chat</span>
                                     </Link>
                                     <span className="tooltip">Order</span>
                                 </li>
