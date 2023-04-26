@@ -214,10 +214,11 @@ const KYC = () => {
   }
 
   return (
-    <div className='my-3 container'>
+    <div className='my-3 container text-white'>
     <form onSubmit={kycsubmit} id='kycform' encType="multipart/form-data">
 
-      <fieldset>
+      <fieldset >
+      {/* <fieldset className='d-flex flex-column'> */}
           <legend>KYC:</legend>
 
           <label>Full Name as per Aadhar: &nbsp; </label>

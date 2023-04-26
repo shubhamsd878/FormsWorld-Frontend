@@ -125,7 +125,7 @@ const ServiceItem = (props) => {
 
             {/* <!-- Modal --> */}
             {/* <div className="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable custom-display" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">     */}
-            <div className="modal fade custom-display" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">    
+            <div className="modal fade custom-display text-dark" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">    
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

@@ -1,0 +1,68 @@
+.top-heading {
+    font-size: 4vw;
+    font-weight: 700;
+    text-align: center;
+
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg, #FF6347 30%, #FFA07A, #F08080 80%);
+    -webkit-background-clip: text;
+    background-size: cover;
+
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+// h1 {
+//     text-align: center;
+// }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0080ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0066cc;
+}
+
+@media screen and (max-width: 480px) {
+    form {
+        padding: 10px;
+    }
+}

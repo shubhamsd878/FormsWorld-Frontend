@@ -4,12 +4,12 @@ import AdminPage from './Admin/AdminPage'
 import Auth from './Admin/Auth'
 const Admin = () => {
     return(
-        <>
+        <div className='text-dark'>
         { !sessionStorage.adminAuth ?
             (<Auth/>) :
             (<AdminPage />)
         }
-        </> 
+        </div> 
     )
     
 }
