@@ -1,5 +1,7 @@
-table, th, td{
-    border: 1px solid black;
+/* table, th, td{ */
+td{
+    border: 0.5px solid #91919177;
+    cursor: pointer;
 }
 th{
     /* padding:10px 4vw; */

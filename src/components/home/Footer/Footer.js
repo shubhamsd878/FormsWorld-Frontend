@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet, Link } from "react-router-dom";
 import {FaFacebook, FaTwitter, FaInstagram, FaLinkedin} from 'react-icons/fa'
 import './Footer.scss'
 
@@ -18,11 +19,9 @@ const Footer = () => {
                     <div class="col-md-4">
                         <h4>Navigation</h4>
                         <ul class="list-unstyled">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="/services">Services</a></li>
-                            <li><a href="/products">Products</a></li>
-                            <li><a href="/contact">Contact Us</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/about">About Us</Link></li>
+                            <li><Link to="/services">Services</Link></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
@@ -42,11 +41,13 @@ const Footer = () => {
                         </div>
                         <div class="col-md-6">
                             <ul class="list-inline">
-                                <li><a href="/privacy">Privacy Policy</a></li>
-                                <li><a href="/terms">Terms of Use</a></li>
-                                <li><a href="/sitemap">Site Map</a></li>
-                                <li><a href="/faq">FAQ</a></li>
-                                <li><a href="/testimonials">Testimonials</a></li>
+                                {/* <li><a href="/privacy">Privacy Policy</a></li> */}
+                                {/* <li><a href="/terms">Terms of Use</a></li> */}
+                                <li><a href="#Welcome">Welcome Page</a></li>
+                                <li><a href="#why-us">Why Us</a></li>
+                                <li><a href="#social-reviews">Site Map</a></li>
+                                <li><a href="#faq">FAQ</a></li>
+                                <li><a href="#testimonials">Testimonials</a></li>
                             </ul>
                         </div>
                     </div>

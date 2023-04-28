@@ -25,7 +25,7 @@ const Orders = () => {
     <div>
       <div className="text">Orders</div>
 
-      <table>
+      <table className='table table-hover .table-bordered m-3'>
         <tr>
           <th>uid</th>
           <th>email</th>
@@ -41,6 +41,8 @@ const Orders = () => {
         )}
 
       </table>
+
+      {orders.length === 0 && <div className='d-flex justify-content-center text-muted'><h6 className=''>No Data in Database</h6></div>}
 
     </div>
   )

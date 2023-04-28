@@ -1,0 +1,24 @@
+.about-us-container {
+    background-color: #151518;
+    color: rgb(200, 215, 230);
+    padding: 60px;
+    text-align: center;
+
+    .about-us-title {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(90deg, #FF6347, #FFA07A, #F08080);
+        -webkit-background-clip: text;
+        background-size: cover;
+    }
+
+    .about-us-description {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        text-align: justify;
+    }
+}

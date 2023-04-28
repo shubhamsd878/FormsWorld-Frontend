@@ -2,14 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import './NavbarCSS.css'
 import logo from './logo/logo.png';
 import { Outlet, Link } from "react-router-dom";
-// import { useContext, useState, useEffect } from 'react/cjs/react.development';
-// import { ContextCreator } from '../context-api/ContextCreator';
-// import KYC from './KYC';
+import { FiLock, FiUserCheck, FiLogOut } from 'react-icons/fi';
 import defaultUserIcon from './Navbar/defaultUserIcon.jpg'
 
 export default function Navbar() {
     const token = localStorage.getItem('token')
     
+
+    // for popup sign in
     let popupContainer
     let loginForm
     let signupForm
@@ -37,10 +37,41 @@ export default function Navbar() {
     }
 
 
+    // --- for updating password ---
+    const changePassword = (e) => {
+        e.preventDefault()
+        // Prompt user for new password input
+        const newPassword = prompt('Please enter your new password:', '');
+      
+        // Send fetch request to backend with new password as payload
+        fetch('http://localhost:3001/updatePassword', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'authtoken': token
+          },
+          body: JSON.stringify({ newPassword })
+        })
+        .then(response => {
+          if (response.ok) {
+            // Password was updated successfully, do something here
+            alert('Successfull! Password Updated Successfully')
+          } else {
+            // Password update failed, handle error here
+            alert('Error! Password not Changed')
+          }
+        })
+        .catch(error => {
+          alert('Error! Something went Wrong.')
+        });
+      }
+
+
     return (
         <div className='Navbar-main'>
             <header className='header'>
                 <a className="logo" href="/"><img src={logo} alt="logo" width="40%" /></a>
+                
                 <nav>
                     <ul className="nav__links">
 
@@ -48,7 +79,7 @@ export default function Navbar() {
                         <li className='text-muted'> | </li>
                         <li><Link to="services"><b style={{ fontSize: "1.15vw" }}>Services</b></Link></li>
                         <li className='text-muted'> | </li>
-                        <li><Link to="KYC"><b style={{ fontSize: "1.15vw" }}>KYC</b></Link></li>
+                        <li><Link to="about"><b style={{ fontSize: "1.15vw" }}>About Us</b></Link></li>
 
                     </ul>
                 </nav>
@@ -70,9 +101,9 @@ export default function Navbar() {
                         <div className="dropdown">
                             <img className="default-user-image " src={defaultUserIcon} alt='default_user_image' />
                             <div className="dropdown-content">
-                                <a href="#">Orders</a>
-                                <a href="#"> Settings</a>
-                                <a href="" onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('uid'); window.location.reload() }}>Sign Out</a>
+                                <Link to="kyc"> <FiUserCheck /> KYC</Link>
+                                <a href="" onClick={changePassword}><FiLock /> Password</a>
+                                <a href="" onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('uid'); window.location.reload() }}><FiLogOut /> Sign Out</a>
                             </div>
                         </div>
 

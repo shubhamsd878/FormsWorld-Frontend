@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+.account-settings-container {
+  display: flex;
+//   background-color: #232323;
+  background-color: #24252a;
+  color: #fff;
+  height: 100%;
+
+  .account-settings-sidebar {
+    width: 200px;
+    padding: 20px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #fff;
+          text-decoration: none;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            color: #6c757d;
+            transform: translateX(5px);
+          }
+
+          svg {
+            margin-right: 10px;
+          }
+
+          span {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  .account-settings-content {
+    padding: 20px;
+  }
+}

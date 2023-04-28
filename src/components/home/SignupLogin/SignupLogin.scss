@@ -1,8 +1,13 @@
+.btn-otp{
+  padding:0.3em; 
+  font-size:small;
+}
+
+// -------------------------------
 .title {
   font-weight: bold;
 
   -webkit-text-fill-color: transparent;
-  background: linear-gradient(90deg, #FF6347, #FFA07A, #F08080);
   background: linear-gradient(90deg, #00CED1, #1E90FF, #ADD8E6);
   -webkit-background-clip: text;
   background-size: cover;

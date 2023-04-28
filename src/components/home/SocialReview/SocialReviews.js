@@ -1,39 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SocialReview.scss'
 import ReviewRow from './ReviewRow/ReviewRow'
+import DB1 from './db/db1.json'
+import DB2 from './db/db2.json'
 
 const SocialReviews = () => {
+
     return (
         <div class="">
-            {/* <marquee behavior='scroll'> */}
-            <marquee behavior='scroll' loop='-1' onMouseOver={"this.stop();"}>
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-                
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-            </marquee>
-
-            <marquee direction='right' behavior='scroll' loop='-1' onhover="stop()">
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-                
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-
-                <ReviewRow />
-                <ReviewRow />
-                <ReviewRow />
-            </marquee>
+            <marquee behavior='scroll' loop='-1' >
+                <div className='d-flex'>
+                {/* <div style={{display: 'flex',alignItems: 'stretch'}}> */}
+                {DB1.map(item => (
+                    <ReviewRow key={item.avatar} name={item.name} avatar={item.avatar} review={item.review} rating={item.rating} date={item.date} />
+                ))}
         </div>
+                {/* </div> */ }
+            </marquee >
+
+    <marquee direction='right' behavior='scroll' loop='-1' >
+        <div className='d-flex '>
+        {DB2.map(item => (
+            <ReviewRow key={item.avatar} name={item.name} avatar={item.avatar} review={item.review} rating={item.rating} date={item.date} />
+        ))}
+        </div>
+    </marquee>
+        </div >
 
 
     )

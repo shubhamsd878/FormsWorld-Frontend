@@ -14,8 +14,27 @@ import SignupLogin from './home/SignupLogin/SignupLogin';
 
 function home() {
 
-  // const token = useContext(ContextCreator)
-  // useContext
+  const token = localStorage.getItem('token')
+
+  let loginForm
+  let signupForm
+  let popupContainer
+
+  const showSignup = () => {
+      if( token ){
+        alert('Already Logged In.')
+        return;
+      }
+      popupContainer = document.querySelector(".popup-container");
+      loginForm = document.querySelector(".login-form");          {/* not getting initialized in useEffect*/}
+      signupForm = document.querySelector(".signup-form");
+
+      popupContainer.style.display = "flex"
+      signupForm.style.display = "flex";
+      loginForm.style.display = "none";
+  }
+
+
   return (
     <div id="home" >
 
@@ -66,7 +85,7 @@ function home() {
 
           <h6 className='mt-5 mb-4' style={{color:'#adadad', fontWeight:700}}>Sign up now and access exclusive features!</h6>
           {/* <button className='page-2-signup-button'>Sign Up >></button> */}
-          <a className='page-2-signup-button monsterrat'>Sign Up >></a>
+          <a className='page-2-signup-button monsterrat' onClick={showSignup} href='#'>Sign Up >></a>
         </div>
         <img src='Images/Forms.svg' className='forms-image' alt='form'></img>
       </div>
@@ -89,8 +108,6 @@ function home() {
 
       {/* Footer */}
       <Footer />
-
-      {/* <SignupLogin /> */}
 
     </div>
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const ServiceItem = (props) => {
+    const token = localStorage.getItem('token')
+
     //State for payment success or failure
     const [paymentSuccess, setPaymentSuccess] = useState()
 
@@ -44,6 +46,11 @@ const ServiceItem = (props) => {
 
     const checkoutHandler = async (amount) => {
 
+        if (!token) {
+            alert("Please Signup to Continue.")
+            return
+        }
+
         const { data: { key } } = await axios.get("http://localhost:3001/payment/getkey")
 
         const { data: { order } } = await axios.post("http://localhost:3001/payment/checkout", {
@@ -64,10 +71,15 @@ const ServiceItem = (props) => {
                 setPaymentSuccess(true)
                 apply() // calling function to save to db
 
-                alert('payment is successful ');
-                alert('razorpay_payment_id: ' + response.razorpay_payment_id);
-                alert('razorpay_order_id: ' + response.razorpay_order_id);
-                alert('razorpay_signature: ' + response.razorpay_signature)
+                alert('Success! payment is successful' +
+                    '\nrazorpay_payment_id: ' + response.razorpay_payment_id +
+                    '\nrazorpay_order_id: ' + response.razorpay_order_id +
+                    '\nrazorpay_signature: ' + response.razorpay_signatur);
+
+                console.log('--- payment Successful ---')
+                console.log('razorpay_payment_id: ' + response.razorpay_payment_id);
+                console.log('razorpay_order_id: ' + response.razorpay_order_id);
+                console.log('razorpay_signature: ' + response.razorpay_signature)
             },
             // callback_url: "http://localhost:3001/payment/paymentverification",
             prefill: {
@@ -91,13 +103,23 @@ const ServiceItem = (props) => {
         // contains code for payment failure
         razor.on('payment.failed', function (response) {
             setPaymentSuccess(false)
-            alert('code: ' + response.error.code);
-            alert('description: ' + response.error.description);
-            alert('source: ' + response.error.source);
-            alert('step: ' + response.error.step);
-            alert('reason: ' + response.error.reason);
-            alert('order_id: ' + response.error.metadata.order_id);
-            alert('payment_id: ' + response.error.metadata.payment_id);
+            alert('Failure! Payment Failed' +
+                '\n code: ' + response.error.code +
+                '\n description: ' + response.error.description +
+                '\n source: ' + response.error.source +
+                '\n step: ' + response.error.step +
+                '\n reason: ' + response.error.reason +
+                '\n order_id: ' + response.error.metadata.order_id +
+                '\n payment_id: ' + response.error.metadata.payment_id)
+
+            console.log('--- payment Failed ---')
+            console.log('code: ' + response.error.code);
+            console.log('description: ' + response.error.description);
+            console.log('source: ' + response.error.source);
+            console.log('step: ' + response.error.step);
+            console.log('reason: ' + response.error.reason);
+            console.log('order_id: ' + response.error.metadata.order_id);
+            console.log('payment_id: ' + response.error.metadata.payment_id);
         });
 
         razor.open();
@@ -125,7 +147,7 @@ const ServiceItem = (props) => {
 
             {/* <!-- Modal --> */}
             {/* <div className="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable custom-display" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">     */}
-            <div className="modal fade custom-display text-dark" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">    
+            <div className="modal fade custom-display text-dark" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

@@ -40,14 +40,6 @@ const Admin_sidenav = () => {
 
                                 <li className='admin_sidenav'>
                                     <Link to="/admin">
-                                        <i className='bx bx-grid-alt'></i>
-                                        <span className="links_name">Dashboard</span>
-                                    </Link>
-                                    <span className="tooltip">Dashboard</span>
-                                </li>
-
-                                <li className='admin_sidenav'>
-                                    <Link to="/admin/activeForms">
                                         <i class='bx bxs-file'></i>
                                         <span className="links_name">Active Forms</span>
                                     </Link>
@@ -69,45 +61,13 @@ const Admin_sidenav = () => {
                                     </Link>
                                     <span className="tooltip">Users</span>
                                 </li>
-
-                                <li className='admin_sidenav'>
-                                    <Link to="#">
-                                        <i className='bx bx-folder' ></i>
-                                        <span className="links_name">File Manager</span>
-                                    </Link>
-                                    <span className="tooltip">Files</span>
-                                </li>
-
-                                <li className='admin_sidenav'>
-                                    <Link to="#">
-                                        <i className='bx bx-chat' ></i>
-                                        <span className="links_name">chat</span>
-                                    </Link>
-                                    <span className="tooltip">Order</span>
-                                </li>
-
-                                <li className='admin_sidenav'>
-                                    <Link to="#">
-                                        <i className='bx bx-heart' ></i>
-                                        <span className="links_name">Saved</span>
-                                    </Link>
-                                    <span className="tooltip">Saved</span>
-                                </li>
-
-                                <li className='admin_sidenav'>
-                                    <Link to="#">
-                                        <i className='bx bx-cog' ></i>
-                                        <span className="links_name">Setting</span>
-                                    </Link>
-                                    <span className="tooltip">Setting</span>
-                                </li>
-
+                                
                                 <li className="profile">
                                     <div className="profile-details">
                                         {/* <img src="profile.jpg" alt="profileImg"> */}
                                         <div className="name_job">
                                             <div className="name">Shubham Dahiya</div>
-                                            <div className="job">Web designer</div>
+                                            <div className="job">Web Developer</div>
                                         </div>
                                     </div>
                                     <i className='bx bx-log-out' id="log_out" ></i>

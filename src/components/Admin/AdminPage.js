@@ -4,7 +4,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 import './AdminPage.css'
 import Admin_sidenav from './Admin_sidenav';
 import ActiveForms from './NestedRoutes/ActiveForms';
-import Dashboard from './NestedRoutes/Dashboard'
 import Orders from './NestedRoutes/Orders';
 import Users from './NestedRoutes/Users';
 
@@ -17,8 +16,7 @@ const AdminPage = () => {
 
             <section className="home-section">
             <Routes>
-                <Route index element={<Dashboard />} />
-                <Route path='/activeForms' element={<ActiveForms />} />
+                <Route index element={<ActiveForms />} />
                 <Route path='/orders' element={<Orders />} />
                 <Route path='/users' element={<Users />} />
             </Routes>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ServiceItem from './ServiceItem'
 import './Services.css'
+import Footer from './home/Footer/Footer'
 
 const Services = () => {
   // --------------- fetching all forms --------------------
@@ -29,6 +30,7 @@ const Services = () => {
         {serviceItems}
       </div>
       
+      <Footer />
     </div>
   )
 }

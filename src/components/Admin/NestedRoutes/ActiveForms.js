@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './ActiveForms.css'
+import './ActiveForms.scss'
 import TableRow from './ActiveForms/TableRow'
 import './table.css'
 
@@ -59,7 +59,7 @@ const ActiveForms = () => {
 
 
   return (
-    <div>
+    <div className='active-forms'>
       <div className="text display-6" style={{ fontWeight: 'bolder' }}>Active Forms</div>
 
       <br></br>
@@ -67,10 +67,10 @@ const ActiveForms = () => {
 
       {/* *********************** Modal for crating new form *********************** */}
 
-      <button onClick={() => { setAddFormModal(!addFormModal) }}> Add Form </button>
+      <button className='btn btn-secondary mx-3 mt-3' onClick={() => { setAddFormModal(!addFormModal) }}> Add Form </button>
       {addFormModal &&
 
-        <div class="modal-dialog" style={{ position: 'fixed', width: '70vh' }}>
+        <div class="modal-dialog" style={{ position: 'fixed', width: '70vh', left: '50%', transform: 'translateX(-50%)'}}>
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Add Form</h5>
@@ -80,26 +80,37 @@ const ActiveForms = () => {
 
             <div class="modal-body">
               <form onSubmit={handleSubmit}>
-
+                
+                <div className='d-flex justify-content-between my-1'>
                 Title:
                 <input type={'text'} name='title' onChange={handleChange} />
-                {/* <input type={'text'} name='title' onChange={e=> setTitle(e.target.value)}/> */}
-                <br />
+                </div>
+                {/* <br /> */}
+                <div className='d-flex justify-content-between my-1'>
                 Date:
-                <input type={'datetime-local'} name='date' onChange={handleChange} />
-                <br />
+                <input type={'datetime-local'} name='date' onChange={handleChange} style={{width:'66.5%'}}/>
+                </div>
+                {/* <br /> */}
+                <div className='d-flex justify-content-between my-1'>
                 Total Posts:
                 <input type={'number'} name='total_post' onChange={handleChange} />
-                <br />
+                </div>
+                {/* <br /> */}
+                <div className='d-flex justify-content-between my-1'>
                 Age:
                 <input type={'text'} name='age' onChange={handleChange} />
-                <br />
+                </div>
+                {/* <br /> */}
+                <div className='d-flex justify-content-between my-1'>
                 Qualification:
                 <input type={'text'} name='qualification' onChange={handleChange} />
-                <br />
+                </div>
+                {/* <br /> */}
+                <div className='d-flex justify-content-between my-1'>
                 price:
                 <input type={'number'} name='price' onChange={handleChange} />
-                <br />
+                </div>
+                {/* <br /> */}
               </form>
             </div>
 
@@ -116,10 +127,10 @@ const ActiveForms = () => {
 
       {/* ***************************************************************************** */}
       {/* ---------------- table to show existing forms --------------------- */}
-      <table>
+      <table className='table table-hover .table-bordered m-3'>
         <thead>
 
-          <tr>
+          <tr className=''>
             <th> Title </th>
             <th> Last Date </th>
             <th> Total Posts </th>
@@ -130,10 +141,11 @@ const ActiveForms = () => {
             <th style={{marginLeft:'1em'}}> End </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='table-group-divider'>
+          {!fetchForms && <h6>No Data in Database</h6>}
 
           {fetchForms && fetchForms.map(element => 
-            <TableRow key={'ksdfj'} title={element.title} last_date={element.last_date} total_post={element.total_post} age={element.age} qualification={element.qualification} price={element.price}   />
+            <TableRow key={'ksdfj'} title={element.title} last_date={element.last_date} total_post={element.total_post} age={element.age} qualification={element.qualification} price={element.price} />
           )}
 
         </tbody>

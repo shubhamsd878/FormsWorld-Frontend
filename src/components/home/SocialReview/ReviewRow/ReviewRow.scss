@@ -7,6 +7,14 @@
   padding: 16px;
   margin: 16px;
   display: inline-block;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.review-body{
+  flex: 1;
 }
 
 .review-header {
@@ -24,12 +32,12 @@
 
 .review-header h3 {
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.15em;
 }
 
 .review-body p {
-  font-size: 1em;
-  line-height: 1.4;
+  font-size: 0.9em;
+  line-height: 1.5;
   margin: 0 0 12px 0;
 }
 
@@ -38,6 +46,8 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8em;
+
+  margin-top: auto;
 }
 
 .review-footer span {

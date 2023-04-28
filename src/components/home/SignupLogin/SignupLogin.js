@@ -8,32 +8,29 @@ const SignupLogin = () => {
     let popupContainer
     let loginForm
     let signupForm
-    let loginLink
-    let signupLink
-
-    // initializing teh variables
-    useEffect(() => {
-        popupContainer = document.querySelector(".popup-container");
-        loginForm = document.querySelector(".login-form");
-        signupForm = document.querySelector(".signup-form");
-        loginLink = document.querySelector(".login-link");
-        signupLink = document.querySelector(".signup-link");
-    }, [])
-
 
     // for showing login Form
     const loginLinkHandler = () => {
+        loginForm = document.querySelector(".login-form"); {/* not getting initialized in useEffect*/ }
+        signupForm = document.querySelector(".signup-form");
+
         loginForm.style.display = "flex";
         signupForm.style.display = "none";
     }
-    
+
     // for showing Signup Form
     const signupLinkHandler = () => {
+        loginForm = document.querySelector(".login-form"); {/* not getting initialized in useEffect*/ }
+        signupForm = document.querySelector(".signup-form");
+
         signupForm.style.display = "flex";
         loginForm.style.display = "none";
     }
 
     const popupContainerHandler = (e) => {
+        // wrong practice
+        popupContainer = document.querySelector(".popup-container"); {/* not getting initialized in useEffect*/ }
+
         if (e.target === popupContainer) {
             popupContainer.style.display = "none";
         }
@@ -85,8 +82,14 @@ const SignupLogin = () => {
     const [emailVerfied, setEmailVerfied] = useState(false)
     const [numberVerfied, setNumberVerfied] = useState(false)
 
+    const [sendedEmailOtp, setSendedEmailOtp] = useState()      // for checking to userInput
+    const [sendedNumberOtp, setSendedNumberOtp] = useState()      // for checking to userInput
+
     const [emailOtpSignup, setEmailOtpSignup] = useState()
     const [numberOtpSignup, setNumberOtpSignup] = useState()
+
+    const [emailOtpClicked, setEmailOtpClicked] = useState(false)
+    const [numberOtpClicked, setNumberOtpClicked] = useState(false)
 
     const [nameSignup, setNameSignup] = useState('')
     const [emailSignup, setEmailSignup] = useState('')
@@ -95,14 +98,19 @@ const SignupLogin = () => {
 
 
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [otp, setOtp] = useState('');
 
 
-    
+
     const handleSignup = async (event) => {
-        console.log('name' + nameSignup)
-        document.getElementById('result').innerHTML = "loading..."
         event.preventDefault()
+
+        // console.log('name' + nameSignup)
+        if( !emailVerfied  || !numberVerfied ){
+            alert('Please Verify your email & password first to Signup.')
+            return;
+        }
+
+        document.getElementById('result').innerHTML = "loading..."
 
         const response = await fetch('http://localhost:3001/signup', {
             method: 'POST',
@@ -120,10 +128,6 @@ const SignupLogin = () => {
         const data = await response.json()
 
         //!IMOPRTANT    don't know why no need to parse data
-
-        console.log("data.status: " + data.status)
-        console.log("data: " + JSON.stringify(data))
-        console.log("data: " + data)
 
         if (data.status === 200) {
             document.getElementById('result').innerHTML = "User Successfully created"
@@ -150,16 +154,40 @@ const SignupLogin = () => {
         })
 
         response = await response.json()
-        console.log('otp response: ' + JSON.stringify(response))
+        
+        if (response.status === 200) {
+            setSendedEmailOtp(response.otp)
+            setEmailOtpClicked(true)
+
+            alert('OTP sent to Email')
+        }
+        else {
+            alert('Email otp not sent')
+        }
+    }
+
+    const verifyEmailOtp = () => {
+        if( emailOtpSignup == sendedEmailOtp ){
+            setEmailVerfied(true)
+            alert('Email Verified Successfully')
+        }
+        else{
+            alert('Wrong OTP')
+            console.log(emailOtpSignup + " " + sendedEmailOtp)
+        }
     }
 
 
-    // --- function is not working due the reason that fast2sms api need 100rs recharge
+    
+    // ------- code for sending otp to number -------
     const handleSendPhoneOtp = async (e) => {
         e.preventDefault()
 
-        let response = await fetch('http://localhost:3001', {
+        let response = await fetch('http://localhost:3001/otp/phone', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
                 phone: numberSignup
             })
@@ -168,15 +196,35 @@ const SignupLogin = () => {
         response = await response.json()
         console.log('in sendPhoneOtp(): ')
         console.log(JSON.stringify(response))
+
+        if(response.status === 200){
+            setSendedNumberOtp(response.otp)
+            setNumberOtpClicked(true)
+            alert('Otp sended to +91-' +numberSignup )
+        }
+        else{
+            alert("Something went wrong, Otp not sent!")
+        }
     }
 
+    const verifyNumberOtp = () => {
+        if( numberOtpSignup == sendedNumberOtp ){
+            setNumberVerfied(true)
+            alert('Number Verified Successfully!')
+        }
+        else{
+            alert('Wrong OTP')
+            console.log(numberOtpSignup + " " + sendedNumberOtp)
+        }
+    }
+    // -----------------------------------
 
 
     return (
         <div class="popup-container text-white" onClick={popupContainerHandler}>
             <div class="popup">
                 <h2 class="title">Welcome back!</h2>
-                <form class="login-form">
+                <form class="login-form" onSubmit={loginHandler}>
                     <div class="form-field d-flex justify-content-between align-items-center mt-1">
                         <label >Email: &nbsp;</label>
                         <input type="email" className='form-control form-control-sm h-25' style={{ width: '64.5%' }} placeholder="name@example.com" required
@@ -187,7 +235,7 @@ const SignupLogin = () => {
                         <input type="password" className='form-control form-control-sm h-25' style={{ width: '64.5%' }} placeholder="password" required
                             onChange={(e) => { setPasswordLogin(e.target.value) }} />
                     </div>
-                    <button type="submit" class="btn login-btn bg-primary text-white mt-2" onClick={loginHandler}>Login</button>
+                    <button type="submit" class="btn login-btn bg-primary text-white mt-2" >Login</button>
                     <p class="switch-form">Don't have an account? <a href="#" onClick={signupLinkHandler} class="signup-link">Signup</a></p>
                 </form>
 
@@ -203,25 +251,40 @@ const SignupLogin = () => {
                     <div className="form-group d-flex flex-row justify-content-between">
                         <label htmlFor="email">Email</label>
                         <div className='d-flex justify-content-end'>
-                            <input type="email" id="email" value={emailSignup} onChange={e => setEmailSignup(e.target.value)} required
-                                className='form-control form-control-sm h-25' style={{ width: '53.5%' }} />
-                            <button onClick={handleSendEmailOtp}>Send OTP</button>
+                            <input type="email" id="email" value={emailSignup} onChange={e => { emailOtpClicked ? alert('Refresh to change Email') : setEmailSignup(e.target.value) }} required disabled={emailOtpClicked}
+                                className='form-control form-control-sm h-25' style={{ width: '56%' }} />
+                            <button className='btn-otp btn btn-secondary ' onClick={handleSendEmailOtp} disabled={emailVerfied}
+                                >Send OTP</button>
                         </div>
                     </div>
 
                     <div className="form-group d-flex flex-row justify-content-between">
                         <label htmlFor="otp">OTP</label>
-                        <input type="text" id="otp" value={otp} onChange={e => setOtp(e.target.value)} required
-                            className='form-control form-control-sm h-25' style={{ width: '56%' }} />
+
+                        <div className='d-flex justify-content-end'>
+                            <input type="text" id="otp" onChange={e => setEmailOtpSignup(e.target.value)} required disabled={emailVerfied}
+                                className='form-control form-control-sm h-25' style={{ width: '72%' }} />
+                            <button className='btn-otp btn btn-secondary' onClick={verifyEmailOtp} disabled={emailVerfied}>Verify</button>
+                        </div>
                     </div>
 
                     <div className="form-group d-flex flex-row justify-content-between">
                         <label htmlFor="phone">Phone Number &nbsp;</label>
                         <div className='d-flex justify-content-end'>
-                            <input type="tel" id="phone" value={numberSignup} onChange={e => setNumberSignup(e.target.value)} required
-                                className='form-control form-control-sm h-25' style={{ width: '53.5%' }}
+                            <input type="tel" id="phone" value={numberSignup} onChange={e => { numberOtpClicked ? alert('Number already verified or OTP sent to given number') : setNumberSignup(e.target.value) }} required disabled={numberOtpClicked}
+                                className='form-control form-control-sm h-25' style={{ width: '55.5%' }}
                             />
-                            <button onClick={handleSendPhoneOtp}>Send OTP</button>
+                            <button className='btn-otp btn btn-secondary' onClick={handleSendPhoneOtp} disabled={numberVerfied}>Send OTP</button>
+                        </div>
+                    </div>
+
+                    <div className="form-group d-flex flex-row justify-content-between">
+                        <label htmlFor="otp">OTP</label>
+
+                        <div className='d-flex justify-content-end'>
+                            <input type="text" id="number-otp" onChange={e =>{ numberVerfied ? alert('Number Already Verified') : setNumberOtpSignup(e.target.value)} } required disabled={numberVerfied}
+                                className='form-control form-control-sm h-25' style={{ width: '72%' }} />
+                            <button className='btn-otp btn btn-secondary ' onClick={verifyNumberOtp} disabled={numberVerfied}>Verify</button>
                         </div>
                     </div>
 
