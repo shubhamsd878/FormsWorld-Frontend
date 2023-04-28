@@ -7,6 +7,9 @@ const ServiceItem = (props) => {
     //State for payment success or failure
     const [paymentSuccess, setPaymentSuccess] = useState()
 
+    //for paymentid when successful
+    // const [paymentId, setPaymentId] = useState()
+
     // constants for razorpay payment gateway
     const payment_name = "Shubham Dahiya"
     const payment_email = "shubham.sd878@gmail.com"
@@ -19,7 +22,7 @@ const ServiceItem = (props) => {
 
 
     // ---------------- applying for the form --------------------
-    const apply = async () => {
+    const apply = async (paymentId) => {
         console.log('applying for formId: ' + props._id)
 
         let uid = localStorage.getItem('uid')
@@ -33,7 +36,8 @@ const ServiceItem = (props) => {
             body: JSON.stringify({
                 form_id: props._id,
                 uid: localStorage.getItem('uid'),
-                payment: true
+                payment: true,
+                payment_id: paymentId
             })
         })
 
@@ -67,9 +71,19 @@ const ServiceItem = (props) => {
             order_id: order.id,
 
             // -- handler contains code for successful payment
-            handler: function (response) {
+            handler: async function (response) {
                 setPaymentSuccess(true)
-                apply() // calling function to save to db
+                const { data } = await axios.post("http://localhost:3001/payment/paymentverification", {    //saving payment details to payment db
+                    amount,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature
+                });
+                // setPaymentId(data.data._id)
+                console.log(data);
+                console.log('payment_id: ' + data.data._id);
+
+                apply( data.data._id ) // calling function to save to orders db  &  data.data._id is nothing but _id from payments db
 
                 alert('Success! payment is successful' +
                     '\nrazorpay_payment_id: ' + response.razorpay_payment_id +
@@ -91,10 +105,6 @@ const ServiceItem = (props) => {
                 "address": "Forms World Corporate Office"
             },
             theme: {
-                // "color": "#121212"
-                // "color": "#ffae00"
-                // "color": "#ab7d1b"
-                // "color": "#3d3d3d"
                 "color": "#292929"
             }
         };
