@@ -71,7 +71,7 @@ const SignupLogin = () => {
             window.location.reload()
         }
         else
-            document.getElementById('result').innerHTML = "Enter_valid_creadentials! "
+            document.getElementById('login-result').innerHTML = data.message
     }
 
 
@@ -130,7 +130,7 @@ const SignupLogin = () => {
         //!IMOPRTANT    don't know why no need to parse data
 
         if (data.status === 200) {
-            document.getElementById('result').innerHTML = "User Successfully created"
+            document.getElementById('result').innerHTML = data.message
         }
         else
             document.getElementById('result').innerHTML = "Enter valid Details"
@@ -235,7 +235,8 @@ const SignupLogin = () => {
                         <input type="password" className='form-control form-control-sm h-25' style={{ width: '64.5%' }} placeholder="password" required
                             onChange={(e) => { setPasswordLogin(e.target.value) }} />
                     </div>
-                    <button type="submit" class="btn login-btn bg-primary text-white mt-2" >Login</button>
+                    <p id='login-result' className='small text-danger mt-1'></p>
+                    <button type="submit" class="btn login-btn bg-primary text-white mt-1" >Login</button>
                     <p class="switch-form">Don't have an account? <a href="#" onClick={signupLinkHandler} class="signup-link">Signup</a></p>
                 </form>
 

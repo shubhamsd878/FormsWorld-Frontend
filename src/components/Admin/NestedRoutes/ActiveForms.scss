@@ -1,4 +1,9 @@
 .active-forms {
+  // overriding bootstrap 
+  .modal-dialog {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
 
   .modal-content {
     background-color: #fff;
@@ -41,6 +46,8 @@
     align-items: center;
     flex-direction: column;
   }
+
+  
 
   /* input[type="text"],
 input[type="number"],

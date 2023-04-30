@@ -54,13 +54,14 @@ const Admin_sidenav = () => {
                                     <span className="tooltip">Orders</span>
                                 </li>
 
-                                <li className='admin_sidenav'>
+                                {/* Hidden Users Nav bcoz not completed yet */}
+                                {/* <li className='admin_sidenav'>
                                     <Link to="/admin/users">
                                         <i className='bx bx-user' ></i>
                                         <span className="links_name">Users</span>
                                     </Link>
                                     <span className="tooltip">Users</span>
-                                </li>
+                                </li> */}
                                 
                                 <li className="profile">
                                     <div className="profile-details">

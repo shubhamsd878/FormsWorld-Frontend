@@ -227,8 +227,15 @@ const KYC = () => {
         })
 
         const res = await response.json()
+        if( res.status === 200){
+            alert('Success! Kyc has been successfully completed')
+        }
+        else{
+            alert('Erro! Something went wrong, KYC not completed, Please try again later ')
+            console.log(res.err)
+        }
 
-        console.log(res.message)
+        // console.log(res.message)
     }
 
     return (
@@ -261,8 +268,8 @@ const KYC = () => {
                     <div class="form-group col">
                         <label for="Gender">Gender: </label>
                         <div className='d-flex'>
-                            <input className='form-control' className='form-check-input me-2' type="radio" id="g-male" name="gender" value='male' onChange={handleChange} required /> Male &nbsp; &nbsp;
-                            <input className='form-control' className='form-check-input ms-3 me-2' type="radio" id="f-male" name="gender" value='female' onChange={handleChange} required /> Female
+                            <input className='form-control form-check-input me-2' type="radio" id="g-male" name="gender" value='male' onChange={handleChange} required /> Male &nbsp; &nbsp;
+                            <input className='form-control form-check-input ms-3 me-2' type="radio" id="f-male" name="gender" value='female' onChange={handleChange} required /> Female
                         </div>
                     </div>
                     <div class="form-group col">
@@ -309,7 +316,7 @@ const KYC = () => {
                     </div>
                     <div class="form-group col">
                         <label for="caste-certificate">Caste Certificate:</label>
-                        <input className='form-control' type="file" id="caste-certificate" name="caste_certificate" accept=".pdf,.jpg,.jpeg,.png" onChange={handleChange} required />
+                        <input className='form-control' type="file" id="caste-certificate" name="caste_certificate" accept=".pdf,.jpg,.jpeg,.png" onChange={handleChange}/>
                     </div>
                 </div>
 
@@ -323,6 +330,8 @@ const KYC = () => {
                         <input className='form-control' type="file" id="right-thumb-impression" name="right_thumb" accept=".pdf,.jpg,.jpeg,.png" onChange={handleChange} required />
                     </div>
                 </div>
+                <p className='mt-3'><u><b>Note:</b></u> You may require to share more documents for filling various forms throught whatsapp. </p>
+
                 <button className="mb-5" type="submit">Submit</button>
             </form>
 

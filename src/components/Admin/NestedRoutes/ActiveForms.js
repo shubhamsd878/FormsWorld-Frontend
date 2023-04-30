@@ -26,7 +26,8 @@ const ActiveForms = () => {
       body: JSON.stringify(addForm)
     })
     response = await response.json()
-    console.log('response: ' + JSON.stringify(response))
+
+    alert(response.message)
   }
 
 
@@ -47,16 +48,6 @@ const ActiveForms = () => {
   }, [])
 
 
-  const serviceItems = fetchForms.map((i) =>
-  // <li key={i.heading}>{link.endpoint}</li> 
-  <>
-              <p>{i.title}</p>
-              <p>{i.description}</p>
-              <p>{i.total_post}</p>
-              <p>{i.last_date}</p>
-            </>
-  );
-
 
   return (
     <div className='active-forms'>
@@ -70,7 +61,7 @@ const ActiveForms = () => {
       <button className='btn btn-secondary mx-3 mt-3' onClick={() => { setAddFormModal(!addFormModal) }}> Add Form </button>
       {addFormModal &&
 
-        <div class="modal-dialog" style={{ position: 'fixed', width: '70vh', left: '50%', transform: 'translateX(-50%)'}}>
+        <div class="modal-dialog" style={{ position: 'fixed', width: '70vh', left: '50%', transform: 'translateX(-50%)' }}>
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Add Form</h5>
@@ -80,35 +71,35 @@ const ActiveForms = () => {
 
             <div class="modal-body">
               <form onSubmit={handleSubmit}>
-                
+
                 <div className='d-flex justify-content-between my-1'>
-                Title:
-                <input type={'text'} name='title' onChange={handleChange} />
+                  Title:
+                  <input type={'text'} name='title' onChange={handleChange} />
                 </div>
                 {/* <br /> */}
                 <div className='d-flex justify-content-between my-1'>
-                Date:
-                <input type={'datetime-local'} name='date' onChange={handleChange} style={{width:'66.5%'}}/>
+                  Date:
+                  <input type={'datetime-local'} name='date' onChange={handleChange} style={{ width: '66.5%' }} />
                 </div>
                 {/* <br /> */}
                 <div className='d-flex justify-content-between my-1'>
-                Total Posts:
-                <input type={'number'} name='total_post' onChange={handleChange} />
+                  Total Posts:
+                  <input type={'number'} name='total_post' onChange={handleChange} />
                 </div>
                 {/* <br /> */}
                 <div className='d-flex justify-content-between my-1'>
-                Age:
-                <input type={'text'} name='age' onChange={handleChange} />
+                  Age:
+                  <input type={'text'} name='age' onChange={handleChange} />
                 </div>
                 {/* <br /> */}
                 <div className='d-flex justify-content-between my-1'>
-                Qualification:
-                <input type={'text'} name='qualification' onChange={handleChange} />
+                  Qualification:
+                  <input type={'text'} name='qualification' onChange={handleChange} />
                 </div>
                 {/* <br /> */}
                 <div className='d-flex justify-content-between my-1'>
-                price:
-                <input type={'number'} name='price' onChange={handleChange} />
+                  price:
+                  <input type={'number'} name='price' onChange={handleChange} />
                 </div>
                 {/* <br /> */}
               </form>
@@ -127,7 +118,7 @@ const ActiveForms = () => {
 
       {/* ***************************************************************************** */}
       {/* ---------------- table to show existing forms --------------------- */}
-      <table className='table table-hover .table-bordered m-3'>
+      <table className='table table-hover .table-bordered'>
         <thead>
 
           <tr className=''>
@@ -138,14 +129,14 @@ const ActiveForms = () => {
             <th> Qualification </th>
             <th> Price </th>
             <th> Edit </th>
-            <th style={{marginLeft:'1em'}}> End </th>
+            {/* <th style={{marginLeft:'1em'}}> End </th> */}
           </tr>
         </thead>
         <tbody className='table-group-divider'>
           {!fetchForms && <h6>No Data in Database</h6>}
 
-          {fetchForms && fetchForms.map(element => 
-            <TableRow key={'ksdfj'} title={element.title} last_date={element.last_date} total_post={element.total_post} age={element.age} qualification={element.qualification} price={element.price} />
+          {fetchForms && fetchForms.map(element =>
+            <TableRow key={element._id} _id={element._id} title={element.title} last_date={element.last_date} total_post={element.total_post} age={element.age} qualification={element.qualification} price={element.price} />
           )}
 
         </tbody>

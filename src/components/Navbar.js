@@ -43,6 +43,10 @@ export default function Navbar() {
         // Prompt user for new password input
         const newPassword = prompt('Please enter your new password:', '');
       
+        if(!newPassword){
+            alert('Bad Request! Password cannot be null')
+            return
+        }
         // Send fetch request to backend with new password as payload
         fetch('http://localhost:3001/updatePassword', {
           method: 'POST',

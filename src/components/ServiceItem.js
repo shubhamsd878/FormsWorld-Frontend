@@ -36,7 +36,7 @@ const ServiceItem = (props) => {
             body: JSON.stringify({
                 form_id: props._id,
                 uid: localStorage.getItem('uid'),
-                payment: true,
+                payment_done: true,
                 payment_id: paymentId
             })
         })

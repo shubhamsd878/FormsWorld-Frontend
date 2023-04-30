@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Shubham",
-      "avatar": "Images/avatar1.jpg",
+      "avatar": "Images/Review_Images/profile1.jpg",
       "review": "I used their service for filling out a government job application and it was a great experience. They were very helpful and provided me with all the necessary information. Highly recommended!",
       "rating": 5,
       "date": "2023-04-25"
@@ -10,7 +10,7 @@
     {
       "id": 2,
       "name": "Chirag",
-      "avatar": "Images/avatar2.jpg",
+      "avatar": "Images/Review_Images/profile2.jpg",
       "review": "The website was very user-friendly and I was able to fill out a government schema with ease. Their service is highly recommended for anyone who needs help with government applications.",
       "rating": 4,
       "date": "2023-04-24"
@@ -18,7 +18,7 @@
     {
       "id": 3,
       "name": "Karan",
-      "avatar": "Images/avatar3.jpg",
+      "avatar": "Images/Review_Images/profile3.jpg",
       "review": "I used their service to fill out a government application and it was a great experience. The staff was very friendly and knowledgeable. I would highly recommend this service to anyone who needs help with government forms.",
       "rating": 5,
       "date": "2023-04-22"
@@ -26,7 +26,7 @@
     {
       "id": 4,
       "name": "Sneha",
-      "avatar": "Images/avatar4.jpg",
+      "avatar": "Images/Review_Images/profile4.jpg",
       "review": "Their service was very helpful in filling out a government application. They provided clear instructions and were very responsive to my questions. Highly recommended!",
       "rating": 4,
       "date": "2023-04-20"
@@ -34,7 +34,7 @@
     {
       "id": 5,
       "name": "Vipul",
-      "avatar": "Images/avatar5.jpg",
+      "avatar": "Images/Review_Images/profile5.jpg",
       "review": "I used their service to fill out a government form and it was a great experience. The staff was very friendly and knowledgeable. I would highly recommend this service to anyone who needs help with government forms.",
       "rating": 5,
       "date": "2023-04-18"
@@ -42,7 +42,7 @@
     {
       "id": 6,
       "name": "Ankit",
-      "avatar": "Images/avatar6.jpg",
+      "avatar": "Images/Review_Images/profile6.jpg",
       "review": "Their service was very helpful in filling out a government application. They provided clear instructions and were very responsive to my questions. Highly recommended!",
       "rating": 4,
       "date": "2023-04-15"
@@ -50,7 +50,7 @@
     {
       "id": 7,
       "name": "Deepak",
-      "avatar": "Images/avatar7.jpg",
+      "avatar": "Images/Review_Images/profile7.jpg",
       "review": "I used their service for filling out a government job application and it was a great experience. They were very helpful and provided me with all the necessary information. Highly recommended!",
       "rating": 5,
       "date": "2023-04-12"
@@ -58,7 +58,7 @@
     {
       "id": 8,
       "name": "Himanshu",
-      "avatar": "Images/avatar8.jpg",
+      "avatar": "Images/Review_Images/profile8.jpg",
       "review": "Their service was very helpful in filling out a government application. They provided clear instructions and were very responsive to my questions. Highly recommended!",
       "rating": 4,
       "date": "2023-04-10"
@@ -66,7 +66,7 @@
     {
         "id": 9,
         "name": "Aryan",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile9.jpg",
         "job": "Passport Application",
         "review": "I was really impressed with the efficiency of the team. They helped me fill out my passport application without any hassle. Highly recommend their services!",
         "rating": 5,
@@ -74,8 +74,8 @@
       },
       {
         "id": 10,
-        "name": "Riya",
-        "image": "Images/temp_profile.jpg",
+        "name": "Anmol",
+        "avatar": "Images/Review_Images/profile10.jpg",
         "job": "Aadhaar Card Update",
         "review": "I was having trouble updating my Aadhaar card online, but this website made it super easy for me. The team was very helpful and responsive. Thank you!",
         "rating": 4,
@@ -84,7 +84,7 @@
       {
         "id": 11,
         "name": "Anmol",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile11.jpg",
         "job": "GST Registration",
         "review": "I had a great experience with this website while registering for GST. The team was knowledgeable and helped me with all my queries. Will definitely use their services again!",
         "rating": 4,
@@ -92,8 +92,8 @@
       },
       {
         "id": 12,
-        "name": "Sakshi",
-        "image": "Images/temp_profile.jpg",
+        "name": "Chirag",
+        "avatar": "Images/Review_Images/profile12.jpg",
         "job": "Income Certificate Application",
         "review": "The team at this website was very helpful in guiding me through the income certificate application process. They were quick to respond to my queries and made the whole process seamless. Highly recommend!",
         "rating": 5,
@@ -102,7 +102,7 @@
       {
         "id": 13,
         "name": "Rajat",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile13.jpg",
         "job": "Pan Card Application",
         "review": "I had a great experience with this website while applying for my Pan card. The team was very responsive and helped me with all my doubts. Will definitely recommend to others!",
         "rating": 5,
@@ -111,7 +111,7 @@
       {
         "id": 14,
         "name": "Priya",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile25.jpg",
         "job": "Passport Renewal",
         "review": "I needed to renew my passport and this website made the whole process easy and hassle-free. The team was very professional and answered all my queries promptly. Would definitely use their services again!",
         "rating": 5,
@@ -120,7 +120,7 @@
       {
         "id": 15,
         "name": "Kunal",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile15.jpg",
         "job": "Driving License Application",
         "review": "The team at this website helped me apply for my driving license and made the process seamless. They were very responsive and helped me with all my doubts. Highly recommend their services!",
         "rating": 4,

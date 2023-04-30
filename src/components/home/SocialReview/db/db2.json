@@ -2,7 +2,7 @@
     {
         "id": 16,
         "name": "Neha",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile16.jpg",
         "job": "Scholarship Application",
         "review": "I had a great experience with this website while applying for a scholarship. The team was very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 5,
@@ -11,7 +11,7 @@
     {
         "id": 17,
         "name": "Vikram",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile14.jpg",
         "job": "Voter ID Card Application",
         "review": "I was having trouble applying for my voter ID card online, but the team at this website made the whole process easy and hassle-free. Highly recommend their services!",
         "rating": 4,
@@ -20,7 +20,7 @@
     {
         "id": 18,
         "name": "Nisha",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile18.jpg",
         "job": "PAN Card Correction",
         "review": "I needed to make some corrections in my PAN card and the team at this website helped me do that easily. They were very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 5,
@@ -29,7 +29,7 @@
     {
         "id": 19,
         "name": "Rohan",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile19.jpg",
         "job": "Passport Application",
         "review": "I had a great experience with this website while applying for my passport. The team was very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 5,
@@ -38,7 +38,7 @@
     {
         "id": 20,
         "name": "Aman",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile20.jpg",
         "job": "PAN Card Application",
         "review": "The team at this website helped me apply for my PAN card and made the process seamless. They were very responsive and helped me with all my doubts. Highly recommend their services!",
         "rating": 4,
@@ -47,7 +47,7 @@
     {
         "id": 21,
         "name": "Riya",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile21.jpg",
         "job": "Driving License Renewal",
         "review": "I needed to renew my driving license and this website made the whole process easy and hassle-free. The team was very professional and answered all my queries promptly. Would definitely use their services again!",
         "rating": 5,
@@ -56,7 +56,7 @@
     {
         "id": 22,
         "name": "Varun",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile22.jpg",
         "job": "Voter ID Card Correction",
         "review": "I needed to make some corrections in my voter ID card and the team at this website helped me do that easily. They were very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 4,
@@ -65,7 +65,7 @@
     {
         "id": 23,
         "name": "Neha",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile25.jpg",
         "job": "Scholarship Application",
         "review": "The team at this website helped me apply for a scholarship and made the process seamless. They were very responsive and helped me with all my doubts. Highly recommend their services!",
         "rating": 5,
@@ -74,7 +74,7 @@
     {
         "id": 24,
         "name": "Karan",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile24.jpg",
         "job": "LPG Subsidy Application",
         "review": "I had a great experience with this website while applying for LPG subsidy. The team was very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 5,
@@ -83,7 +83,7 @@
     {
         "id": 25,
         "name": "Manish",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile17.jpg",
         "job": "Scholarship Application",
         "review": "I needed to apply for a scholarship and the team at this website helped me do that easily. They were very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 4,
@@ -91,8 +91,8 @@
     },
     {
         "id": 26,
-        "name": "Priya",
-        "image": "Images/temp_profile.jpg",
+        "name": "Ankit",
+        "avatar": "Images/Review_Images/profile26.jpg",
         "job": "Birth Certificate Application",
         "review": "I had to apply for my son's birth certificate and the team at this website made the whole process easy and hassle-free. They were very responsive and helped me with all my doubts. Would definitely use their services again!",
         "rating": 5,
@@ -101,7 +101,7 @@
     {
         "id": 27,
         "name": "Siddharth",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile27.jpg",
         "job": "PAN Card Application",
         "review": "I needed to apply for a PAN card and the team at this website helped me do that easily. They were very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 5,
@@ -109,8 +109,8 @@
     },
     {
         "id": 28,
-        "name": "Anjali",
-        "image": "Images/temp_profile.jpg",
+        "name": "Chaman",
+        "avatar": "Images/Review_Images/profile17.jpg",
         "job": "Driving License Application",
         "review": "The team at this website helped me apply for my driving license and made the process seamless. They were very responsive and helped me with all my doubts. Highly recommend their services!",
         "rating": 4,
@@ -119,7 +119,7 @@
     {
         "id": 29,
         "name": "Rahul",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile28.jpg",
         "job": "Passport Application",
         "review": "I had to apply for my passport and the team at this website made the whole process easy and hassle-free. They were very responsive and helped me with all my doubts. Would definitely use their services again!",
         "rating": 5,
@@ -128,7 +128,7 @@
     {
         "id": 30,
         "name": "Simran",
-        "image": "Images/temp_profile.jpg",
+        "avatar": "Images/Review_Images/profile25.jpg",
         "job": "Aadhaar Card Application",
         "review": "I had a great experience with this website while applying for my Aadhaar card. The team was very professional and guided me through the whole process. Highly recommend their services!",
         "rating": 4,

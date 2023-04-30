@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Orders_tablerow from './Orders/Orders_tablerow'
+import './table.css'
 
 const Orders = () => {
   // ---------- fetching orders ----------
@@ -19,26 +20,31 @@ const Orders = () => {
     fetc()
   }, [])
 
-  
+
 
   return (
     <div>
       <div className="text">Orders</div>
 
-      <table className='table table-hover .table-bordered m-3'>
-        <tr>
-          <th>uid</th>
-          <th>email</th>
-          <th>form_id</th>
-          <th>Applying dateTime</th>
-          <th>payment</th>
-          <th>Whatsapp_Phone---remaining</th>
-        </tr>
-        {orders.map(e =>
-          <Orders_tablerow key={e._id} dateTime={e.dateTime} payment_done={e.payment_done} 
-            uid={e.uid._id} name={e.uid.name} email={e.uid.email} 
-            form_id={e.form_id._id} form_title={e.form_id.title} />
-        )}
+      <table className='table table-hover .table-bordered'>
+        <thead>
+
+          <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>form_id</th>
+            <th>Applying dateTime</th>
+            <th>payment</th>
+            {/* <th>Whatsapp_Phone---remaining</th> */}
+          </tr>
+        </thead>
+        <tbody className='table-group-divider'>
+          {orders.map(e =>
+            <Orders_tablerow key={e._id} dateTime={e.dateTime} payment_done={e.payment_done}
+              uid={e.uid._id} name={e.uid.name} email={e.uid.email}
+              form_id={e.form_id._id} form_title={e.form_id.title} />
+          )}
+        </tbody>
 
       </table>
 

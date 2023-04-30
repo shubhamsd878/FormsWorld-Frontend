@@ -6,7 +6,7 @@ const ReviewRow = ({ name, avatar, review, rating, date }) => {
   return (
     <div class="review-card">
       <div class="review-header">
-        <img src="Images/temp_profile.jpg" alt="User Avatar" />
+        <img src={avatar} alt="User Avatar" />
         <h3>{name}</h3>
       </div>
       <div class="review-body">
