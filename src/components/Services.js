@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ServiceItem from './ServiceItem'
 import './Services.css'
-import Footer from './home/Footer/Footer'
+import Footer from './Footer/Footer'
 
 const Services = () => {
   // --------------- fetching all forms --------------------
@@ -21,15 +21,15 @@ const Services = () => {
   );
 
   return (
-    <div className="services">
-      <div className="contain">
-      </div>
+    <div className="services ">
 
       {/* -----------------------    GRID  CARD     ---------------------- */}
-      <div className="grid-container">
-        {serviceItems}
+      <div className="d-flex justify-content-center">
+        <div className="grid-container">
+          {serviceItems}
+        </div>
       </div>
-      
+
       <Footer />
     </div>
   )

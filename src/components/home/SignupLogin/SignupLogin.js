@@ -4,6 +4,8 @@ import './SignupLogin.scss'
 
 const SignupLogin = () => {
 
+    const [isSignupLoading, setIsSignupLoading] = useState(false)
+    const [isLoginLoading, setIsLoginLoading] = useState(false)
     // --- code for showing up popup and changing from signup to loginc and vice-versa
     let popupContainer
     let loginForm
@@ -46,6 +48,7 @@ const SignupLogin = () => {
 
         document.getElementById('result').innerHTML = "loading..."
         event.preventDefault()
+        setIsLoginLoading(true)
 
         const response = await fetch('http://localhost:3001/login', {
             method: 'POST',
@@ -61,7 +64,7 @@ const SignupLogin = () => {
         const data = await response.json()
 
         //!IMOPRTANT    don't know why no need to parse data
-
+        setIsLoginLoading(false)
         if (data.status === 200) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('uid', data.uid);
@@ -103,9 +106,9 @@ const SignupLogin = () => {
 
     const handleSignup = async (event) => {
         event.preventDefault()
+        setIsSignupLoading(true)
 
-        // console.log('name' + nameSignup)
-        if( !emailVerfied  || !numberVerfied ){
+        if (!emailVerfied || !numberVerfied) {
             alert('Please Verify your email & password first to Signup.')
             return;
         }
@@ -129,11 +132,8 @@ const SignupLogin = () => {
 
         //!IMOPRTANT    don't know why no need to parse data
 
-        if (data.status === 200) {
-            document.getElementById('result').innerHTML = data.message
-        }
-        else
-            document.getElementById('result').innerHTML = "Enter valid Details"
+        setIsSignupLoading(false)
+        document.getElementById('result').innerHTML = data.message
 
     }
 
@@ -154,7 +154,7 @@ const SignupLogin = () => {
         })
 
         response = await response.json()
-        
+
         if (response.status === 200) {
             setSendedEmailOtp(response.otp)
             setEmailOtpClicked(true)
@@ -167,18 +167,18 @@ const SignupLogin = () => {
     }
 
     const verifyEmailOtp = () => {
-        if( emailOtpSignup == sendedEmailOtp ){
+        if (emailOtpSignup == sendedEmailOtp) {
             setEmailVerfied(true)
             alert('Email Verified Successfully')
         }
-        else{
+        else {
             alert('Wrong OTP')
             console.log(emailOtpSignup + " " + sendedEmailOtp)
         }
     }
 
 
-    
+
     // ------- code for sending otp to number -------
     const handleSendPhoneOtp = async (e) => {
         e.preventDefault()
@@ -197,22 +197,22 @@ const SignupLogin = () => {
         console.log('in sendPhoneOtp(): ')
         console.log(JSON.stringify(response))
 
-        if(response.status === 200){
+        if (response.status === 200) {
             setSendedNumberOtp(response.otp)
             setNumberOtpClicked(true)
-            alert('Otp sended to +91-' +numberSignup )
+            alert('Otp sended to +91-' + numberSignup)
         }
-        else{
+        else {
             alert("Something went wrong, Otp not sent!")
         }
     }
 
     const verifyNumberOtp = () => {
-        if( numberOtpSignup == sendedNumberOtp ){
+        if (numberOtpSignup == sendedNumberOtp) {
             setNumberVerfied(true)
             alert('Number Verified Successfully!')
         }
-        else{
+        else {
             alert('Wrong OTP')
             console.log(numberOtpSignup + " " + sendedNumberOtp)
         }
@@ -236,7 +236,15 @@ const SignupLogin = () => {
                             onChange={(e) => { setPasswordLogin(e.target.value) }} />
                     </div>
                     <p id='login-result' className='small text-danger mt-1'></p>
-                    <button type="submit" class="btn login-btn bg-primary text-white mt-1" >Login</button>
+                    <button type="submit" class="btn login-btn bg-primary text-white mt-1" disabled={isLoginLoading}>
+                        {isLoginLoading ?
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            :
+                            'Login'
+                        }
+                    </button>
                     <p class="switch-form">Don't have an account? <a href="#" onClick={signupLinkHandler} class="signup-link">Signup</a></p>
                 </form>
 
@@ -255,7 +263,7 @@ const SignupLogin = () => {
                             <input type="email" id="email" value={emailSignup} onChange={e => { emailOtpClicked ? alert('Refresh to change Email') : setEmailSignup(e.target.value) }} required disabled={emailOtpClicked}
                                 className='form-control form-control-sm h-25' style={{ width: '56%' }} />
                             <button className='btn-otp btn btn-secondary ' onClick={handleSendEmailOtp} disabled={emailVerfied}
-                                >Send OTP</button>
+                            >Send OTP</button>
                         </div>
                     </div>
 
@@ -283,7 +291,7 @@ const SignupLogin = () => {
                         <label htmlFor="otp">OTP</label>
 
                         <div className='d-flex justify-content-end'>
-                            <input type="text" id="number-otp" onChange={e =>{ numberVerfied ? alert('Number Already Verified') : setNumberOtpSignup(e.target.value)} } required disabled={numberVerfied}
+                            <input type="text" id="number-otp" onChange={e => { numberVerfied ? alert('Number Already Verified') : setNumberOtpSignup(e.target.value) }} required disabled={numberVerfied}
                                 className='form-control form-control-sm h-25' style={{ width: '72%' }} />
                             <button className='btn-otp btn btn-secondary ' onClick={verifyNumberOtp} disabled={numberVerfied}>Verify</button>
                         </div>
@@ -302,8 +310,16 @@ const SignupLogin = () => {
                     </div>
 
                     {/* <button type="submit">Submit</button> */}
-                    <div><p id='result'></p></div>
-                    <button type="submit" class="btn login-btn bg-primary text-white mt-2" >Signup</button>
+                    <div><p id='result' className='small text-danger'>&nbsp;</p></div>
+                    <button type="submit" class="btn login-btn bg-primary text-white mt-1" disabled={isSignupLoading}>
+                        {isSignupLoading ?
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            :
+                            'Signup'
+                        }
+                    </button>
 
 
                     <p class="switch-form">Already have an account? <a href="#" onClick={loginLinkHandler} class="login-link">Login</a></p>

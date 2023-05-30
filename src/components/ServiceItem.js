@@ -156,8 +156,7 @@ const ServiceItem = (props) => {
 
 
             {/* <!-- Modal --> */}
-            {/* <div className="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable custom-display" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">     */}
-            <div className="modal fade custom-display text-dark" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade custom-display text-dark target-modal-vipul" id={staticBackdrop} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -176,13 +175,11 @@ const ServiceItem = (props) => {
 
                         <div className="modal-footer my-2">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                            {/* <button type="button" className="btn btn-primary" onClick={apply}>Pay Rs.{props.price}</button> */}
                             {!paymentSuccess &&
                                 <button type="button" className="btn btn-primary" onClick={() => checkoutHandler(props.price)} >Pay Rs.{props.price}</button>
                             }
                             {paymentSuccess &&
                                 <button type="button" className="btn btn-primary" onClick={() => checkoutHandler(props.price)} disabled>Applied</button>
-
                             }
                         </div>
                     </div>

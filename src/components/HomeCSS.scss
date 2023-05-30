@@ -3,11 +3,9 @@
 }
 
 #home {
-    /* background-color: #151518; */
-    /* width: 100%; */
-    /* height: 45.7vw; */
     min-height: 89.2vh;
     color: rgb(255, 255, 255);
+
     /* for showing 100% height */
     display: flex;
     flex-flow: column;
@@ -17,38 +15,51 @@
 #icon {
     /* width: 18%; */
     width: 17.5vw;
-    /* float: right; */
+    height: 100%;
 
-    position: relative;
-    /* position: fixed; */
+    // position: relative;
 
     /* good */
     /* top: 10.5vw;
     left: 17.5vw; */
 
-    top: 10.5vw;
-    left: 12vw;
+    // top: 2.5vw;
+    // left: 11vw;
 
     /* object-position: 50% 50%; */
 }
 
+.distributing_line {
+    width: 15.3vw;
 
-.auto-input {
-    color: aqua;
+    // position: relative;
+    left: 10vw;
+    top: 5vw;
+    // top: -17vw;
+
+    /* for pc like devices */
+    /* for small devices */
+    /* top: 13vw; */
+
 }
 
 .typed {
     letter-spacing: 1px;
     word-spacing: 0px;
-    position: relative;
+    // position: relative;
     width: 45vw;
     /* left: 48vw; */
-    left: 41.3vw;
-    top: -51.5vw;
+    left: 41.0vw;
+    top: -29.8vw;
+}
+
+.auto-input {
+    color: aqua;
 }
 
 .typed-text {
     font-size: 2.5vw;
+    width: 100%;
 }
 
 .typed-heading,
@@ -69,34 +80,40 @@
 }
 
 .typed-paragraph {
-    /* font-family: "Montserrat", sans-serif; */
-    font-family: "Open Sans", sans-serif;
-
-    font-size: 1em;
-    /* letter-spacing: 2px; */
+    // font-size: 1em;
+    // font-size: 2rem;
     line-height: 1.4;
-    /* letter-spacing: 0px; */
-    /* color: #edf0f1; */
     color: #e4e2e2;
+    cursor: pointer;
 }
 
-.distributing_line {
-    width: 15.3vw;
-    /* height: 37vw; */
-
-    /* position: absolute;
-    left: 28vw;
-    top: 8vw; */
-
-    position: relative;
-    left: 28.5vw;
-    top: -17vw;
-
-    /* for pc like devices */
-    /* for small devices */
-    /* top: 13vw; */
-
+.typed-letter:hover {
+    color: #ffc400;
+    transform: scale(2);
+    transition: 0.4s color ease-out;
 }
+
+
+// .typed-zoom-on-hover {
+//     display: inline-block;
+//     /* ensure transform works */
+//     transition: transform 0.3s ease-in-out;
+// }
+
+// .typed-zoom-on-hover:hover {
+//     transform: scale(1.2);
+//     /* increase size by 20% */
+// }
+
+.zoom-on-hover {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoom-on-hover:hover {
+    transform: scale(1.2);
+}
+
 
 .muted {
     color: #aaaaaa
@@ -110,11 +127,17 @@
 }
 
 
-/* -second page */
+
+/* --- second page --- */
 .second-page {
-    margin-top: -36em; // to fix unknown unwanted bug
+    // margin-top: -36em; // to fix unknown unwanted bug
     // margin-top: 10%; // to fix unknown unwanted bug
     margin-bottom: 15em;
+
+    .heading {
+        font-size: 52px;
+        font-weight: 700;
+    }
 
     .text-gradient {
         background: linear-gradient(90deg, rgb(107, 253, 255) 10%, rgb(255, 108, 186) 22%);
@@ -176,5 +199,70 @@
     // to fix the bootstrap bug, i.e. the right arrow is not visible due to dark color on dark bg
     .accordion-button:after {
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+    }
+}
+
+.typed-paragraph-resp {
+    display: none;
+    max-width: 35em;
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+@media (max-width: 800px) {
+    .forms-image {
+        display: none;
+    }
+
+    #icon,
+    .distributing_line,
+    .right-details {
+        align-self: self-start;
+    }
+
+    #icon {
+        margin-top: 5vw;
+    }
+
+    .right-details {
+        margin-top: 2em;
+    }
+
+    .typed-heading{
+        // font-size: 6vw;
+        font-size: 8vw;
+        margin-top: -1em;
+    }
+
+    .typed-text {
+        width: 51vw;
+        font-size: 4.5vw;
+        line-height: 150%;
+    }
+
+
+    .typed-paragraph {
+        display: none;
+    }
+
+    .typed-paragraph-resp {
+        display: block;
+    }
+
+
+    // --- second page ---
+    .heading {
+        font-size: 40px !important;
+        margin-left: 0.4em;
+        // color: white;
+    }
+
+    // --- third page ---
+    .social-review-heading {
+        font-size: 40px !important;
+    }
+
+    .faq-heading{
+        font-size: 20px !important;
     }
 }

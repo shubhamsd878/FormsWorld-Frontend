@@ -1,50 +1,78 @@
 /* basic setup */
-.services{
-    background-color: #151518;
-    min-height: 89.2vh;
-    height:fit-content;
-    /* color:whitesmoke; */
-    /* font-family: "Open Sans", sans-serif; */
+.services {
+  background-color: #151518;
+  min-height: 89.2vh;
+  height: fit-content;
+  /* color:whitesmoke; */
+  /* font-family: "Open Sans", sans-serif; */
 }
 
-.lastDate{
-    color: #ff00d4;
-    /* color: #ff009d; */
-    /* color: #ffbb00; */
+.lastDate {
+  color: #ff00d4;
+  /* color: #ff009d; */
+  /* color: #ffbb00; */
 }
 
 /* Grid setup */
-.grid-container{
-    display: inline-grid;
-    grid-template-columns: auto auto auto ;
-    gap: 3vw 5vw;
-    margin-left: 15vw;
-    margin-top: 3vw;
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  gap: 2.5em 3.5em;
+  /* margin-top: 3vw; */
+  margin-top: 1.7em;
 }
 
 
 /* --------------- Card Setup ----------- */
 .card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 20vw;
-    padding: 20px 20px;
-    border-radius: 8px;
-    /* border: 2px solid #ff009d; */
-    background-color: #2e2e2e;
-    color: whitesmoke
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  /* width: 20vw; */
+  width: 16.5em;
+  padding: 20px 20px;
+  border-radius: 8px;
+  /* border: 2px solid #ff009d; */
+  background-color: #2e2e2e;
+  color: whitesmoke
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  border: 2px solid #ff00aa;
+  /* border: 2px solid #ff009d; */
+  padding: 18px 18px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+.custom-display {
+  position: absolute;
+    top: auto;
+}
+
+
+@media (max-width: 1050px) {
+  .grid-container {
+    grid-template-columns: auto auto;
+    margin-left: 5vw;
+    gap: 2.5em 3.5em;
   }
-  
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    border: 2px solid #ff00aa;
-    /* border: 2px solid #ff009d; */
-    padding: 18px 18px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: auto;
+    margin-left: 2vw;
+    gap: 1.5em 7vw;
   }
-  
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
-  }
+
+}
+
+
+/* -----*************------- */
+

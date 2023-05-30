@@ -10,12 +10,10 @@ const SocialReviews = () => {
         <div class="">
             <marquee behavior='scroll' loop='-1' >
                 <div className='d-flex'>
-                {/* <div style={{display: 'flex',alignItems: 'stretch'}}> */}
                 {DB1.map(item => (
                     <ReviewRow key={item.avatar} name={item.name} avatar={item.avatar} review={item.review} rating={item.rating} date={item.date} />
                 ))}
         </div>
-                {/* </div> */ }
             </marquee >
 
     <marquee direction='right' behavior='scroll' loop='-1' >

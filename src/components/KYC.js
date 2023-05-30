@@ -1,7 +1,7 @@
 // City, State, Category, Highest Qualification, UG, PG
 import React, { useState } from 'react'
 import './KYC.scss'
-import Footer from './home/Footer/Footer'
+import Footer from './Footer/Footer'
 import * as imageConversion from 'image-conversion';
 
 

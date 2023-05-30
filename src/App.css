@@ -6,21 +6,17 @@
 .App {
     /* min-width: 100vw; */
     min-height: 100vh !important;
+    min-width: 100vw;
     background-color: #151518;
     
     font-family: 'Noto Sans', sans-serif;   /* -- not working -- */
+    font-family: 'Inter', sans-serif;       /* -- not working -- */
 }
 
 .monsterrat {
     font-family: 'Montserrat', sans-serif
 }
 
-.custom-display {
-    position: fixed;
-    top: auto;
-    left: 27rem;
-    width: 31.5rem;
-}
 
 .btn-service-know-more {
     padding: 0.4rem 1rem;
