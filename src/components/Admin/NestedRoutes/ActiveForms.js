@@ -4,6 +4,7 @@ import TableRow from './ActiveForms/TableRow'
 import './table.css'
 
 const ActiveForms = () => {
+  const BACKEND = process.env.REACT_APP_BACKEND
 
   // modal to show add form
   const [addFormModal, setAddFormModal] = useState(false)
@@ -18,7 +19,7 @@ const ActiveForms = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    let response = await fetch('http://localhost:3001/forms', {
+    let response = await fetch(`${BACKEND}/forms`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,7 +36,7 @@ const ActiveForms = () => {
   const [fetchForms, setFetchForms] = useState([])
   useEffect(() => {
     async function fetc() {
-      let response = await fetch('http://localhost:3001/forms')
+      let response = await fetch(`${BACKEND}/forms`)
 
       response = await response.json()
 

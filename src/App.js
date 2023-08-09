@@ -12,6 +12,7 @@ import AccountSetting from './components/AccountSetting/AccountSetting';
 
 
 function App() {
+  console.log('https: slkdfjdskl : ' + `${process.env.REACT_APP_BACKEND}/payment/getkey`)
 
   return (
 
@@ -33,7 +34,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-
     </div>
   );
 }

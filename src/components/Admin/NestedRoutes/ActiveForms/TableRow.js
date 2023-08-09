@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FiEdit } from 'react-icons/fi';
 
 const TableRow = (props) => {
+    const BACKEND = process.env.REACT_APP_BACKEND
     const { _id, title, last_date, total_post, price, qualification, age } = props
 
     // -- The inputs values were not editable when using props in value attribute of input --
@@ -41,7 +42,7 @@ const TableRow = (props) => {
         e.preventDefault()
 
         // need to edit
-        let response = await fetch('http://localhost:3001/forms', {
+        let response = await fetch(`${BACKEND}/forms`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

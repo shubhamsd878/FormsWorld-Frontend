@@ -4,11 +4,13 @@ import './Services.css'
 import Footer from './Footer/Footer'
 
 const Services = () => {
+  const BACKEND = process.env.REACT_APP_BACKEND
+
   // --------------- fetching all forms --------------------
   const [fetchForms, setFetchForms] = useState([])
   useEffect(() => {
     async function fetc() {
-      let response = await fetch('http://localhost:3001/forms')
+      let response = await fetch(`${BACKEND}/forms`)
       response = await response.json()
       setFetchForms(response.results)
     }

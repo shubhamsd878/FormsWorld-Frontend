@@ -9,6 +9,7 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { BsInfoCircle } from 'react-icons/bs'
 
 export default function Navbar() {
+    const BACKEND = process.env.REACT_APP_BACKEND
     const token = localStorage.getItem('token')
 
 
@@ -51,7 +52,7 @@ export default function Navbar() {
             return
         }
         // Send fetch request to backend with new password as payload
-        fetch('http://localhost:3001/updatePassword', {
+        fetch(`${BACKEND}/updatePassword`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

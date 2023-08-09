@@ -3,11 +3,13 @@ import Orders_tablerow from './Orders/Orders_tablerow'
 import './table.css'
 
 const Orders = () => {
+  const BACKEND = process.env.REACT_APP_BACKEND
+
   // ---------- fetching orders ----------
   const [orders, setOrders] = useState([])
   useEffect(() => {
     async function fetc() {
-      let response = await fetch('http://localhost:3001/order')
+      let response = await fetch(`${BACKEND}/order`)
 
       response = await response.json()
 
@@ -40,7 +42,7 @@ const Orders = () => {
         </thead>
         <tbody className='table-group-divider'>
           {orders.map(e =>
-            <Orders_tablerow key={e._id} dateTime={e.dateTime} payment_done={e.payment_done}
+            <Orders_tablerow key={e._id} _id={e._id} dateTime={e.dateTime} payment_done={e.payment_done}
               uid={e.uid._id} name={e.uid.name} email={e.uid.email}
               form_id={e.form_id._id} form_title={e.form_id.title} />
           )}

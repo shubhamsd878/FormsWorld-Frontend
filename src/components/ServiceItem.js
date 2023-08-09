@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const ServiceItem = (props) => {
+    const BACKEND = process.env.REACT_APP_BACKEND
     const token = localStorage.getItem('token')
 
     //State for payment success or failure
@@ -28,7 +29,7 @@ const ServiceItem = (props) => {
         let uid = localStorage.getItem('uid')
         if (!uid) return alert('Sorry! First Sign in to perform the action')
 
-        let response = await fetch('http://localhost:3001/order', {
+        let response = await fetch(`${BACKEND}/order`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,9 +56,9 @@ const ServiceItem = (props) => {
             return
         }
 
-        const { data: { key } } = await axios.get("http://localhost:3001/payment/getkey")
+        const { data: { key } } = await axios.get(`${BACKEND}/payment/getkey`)
 
-        const { data: { order } } = await axios.post("http://localhost:3001/payment/checkout", {
+        const { data: { order } } = await axios.post(`${BACKEND}/payment/checkout`, {
             amount
         })
 
@@ -73,7 +74,7 @@ const ServiceItem = (props) => {
             // -- handler contains code for successful payment
             handler: async function (response) {
                 setPaymentSuccess(true)
-                const { data } = await axios.post("http://localhost:3001/payment/paymentverification", {    //saving payment details to payment db
+                const { data } = await axios.post(`${BACKEND}/payment/paymentverification`, {    //saving payment details to payment db
                     amount,
                     razorpay_payment_id: response.razorpay_payment_id,
                     razorpay_order_id: response.razorpay_order_id,
@@ -95,7 +96,7 @@ const ServiceItem = (props) => {
                 console.log('razorpay_order_id: ' + response.razorpay_order_id);
                 console.log('razorpay_signature: ' + response.razorpay_signature)
             },
-            // callback_url: "http://localhost:3001/payment/paymentverification",
+            // callback_url: `${BACKEND}/payment/paymentverification`,
             prefill: {
                 name: payment_name,
                 email: payment_email,

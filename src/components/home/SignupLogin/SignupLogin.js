@@ -3,6 +3,7 @@ import { FaFacebookF, FaGoogle, FaTwitter } from 'react-icons/fa'
 import './SignupLogin.scss'
 
 const SignupLogin = () => {
+    const BACKEND = process.env.REACT_APP_BACKEND
 
     const [isSignupLoading, setIsSignupLoading] = useState(false)
     const [isLoginLoading, setIsLoginLoading] = useState(false)
@@ -50,7 +51,7 @@ const SignupLogin = () => {
         event.preventDefault()
         setIsLoginLoading(true)
 
-        const response = await fetch('http://localhost:3001/login', {
+        const response = await fetch(`${BACKEND}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -115,7 +116,7 @@ const SignupLogin = () => {
 
         document.getElementById('result').innerHTML = "loading..."
 
-        const response = await fetch('http://localhost:3001/signup', {
+        const response = await fetch(`${BACKEND}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -143,7 +144,7 @@ const SignupLogin = () => {
 
         console.log('inside sending Email otp')
 
-        let response = await fetch('http://localhost:3001/otp/email', {
+        let response = await fetch(`${BACKEND}/otp/email`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -183,7 +184,7 @@ const SignupLogin = () => {
     const handleSendPhoneOtp = async (e) => {
         e.preventDefault()
 
-        let response = await fetch('http://localhost:3001/otp/phone', {
+        let response = await fetch(`${BACKEND}/otp/phone`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

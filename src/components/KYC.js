@@ -6,6 +6,7 @@ import * as imageConversion from 'image-conversion';
 
 
 const KYC = () => {
+    const BACKEND = process.env.REACT_APP_BACKEND
 
     let formData = new FormData();
 
@@ -218,7 +219,7 @@ const KYC = () => {
 
         console.log(formData)
 
-        const response = await fetch('http://localhost:3001/kyc', {
+        const response = await fetch(`${BACKEND}/kyc`, {
             method: 'POST',
             headers: { token: localStorage.getItem('token') },
             body: formData
@@ -227,10 +228,10 @@ const KYC = () => {
         })
 
         const res = await response.json()
-        if( res.status === 200){
+        if (res.status === 200) {
             alert('Success! Kyc has been successfully completed')
         }
-        else{
+        else {
             alert('Erro! Something went wrong, KYC not completed, Please try again later ')
             console.log(res.err)
         }
@@ -316,7 +317,7 @@ const KYC = () => {
                     </div>
                     <div class="form-group col">
                         <label for="caste-certificate">Caste Certificate:</label>
-                        <input className='form-control' type="file" id="caste-certificate" name="caste_certificate" accept=".pdf,.jpg,.jpeg,.png" onChange={handleChange}/>
+                        <input className='form-control' type="file" id="caste-certificate" name="caste_certificate" accept=".pdf,.jpg,.jpeg,.png" onChange={handleChange} />
                     </div>
                 </div>
 

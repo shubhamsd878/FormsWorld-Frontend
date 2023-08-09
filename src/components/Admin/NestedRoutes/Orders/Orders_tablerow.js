@@ -1,31 +1,35 @@
-import React, { useState } from 'react'
+import React, { useId, useState } from 'react'
 import './modal.css'
 
 
 const Orders_tablerow = (props) => {
-    const { uid, dateTime, payment_done, name, email, form_id, form_title } = props
+    const BACKEND = process.env.REACT_APP_BACKEND
+    const { _id, uid, dateTime, payment_done, name, email, form_id, form_title } = props
 
 
     // for fetching userDetails on Click of showModal
-    const [userDetails, setUserDetails] = useState()
+    const [userDetails, setUserDetails] = useState({})
 
     const fetchUserDetails = async () => {
 
-        let response = await fetch('http://localhost:3001/kyc', {
+        let response = await fetch(`${BACKEND}/kyc`, {
             headers: { uid }
         })
 
         response = await response.json()
         console.log(response)
-
         setUserDetails(response.result)
+
+        if(response.result == null){
+            setUserDetails(false)
+        }
     }
 
 
     //-------------- for fetching FormDetails on Click of showModal
     const [formDetails, setFormDetails] = useState()
     const fetchFormDetails = async () => {
-        let response = await fetch('http://localhost:3001/forms/_id', {
+        let response = await fetch(`${BACKEND}/forms/_id`, {
             headers: { fid: form_id }
         })
 
@@ -39,7 +43,7 @@ const Orders_tablerow = (props) => {
 
 
     // ---------------------  Code for the UserModal  ---------------------
-
+    const userModalId = "u" + _id               //useId hook didn't work
     var usermodal
 
     function showUserModal() {
@@ -51,7 +55,7 @@ const Orders_tablerow = (props) => {
 
     function initUserModal() {
         // Get the modal
-        usermodal = document.getElementById("userDetailsModal");
+        usermodal = document.getElementById(userModalId);
 
     }
 
@@ -72,7 +76,7 @@ const Orders_tablerow = (props) => {
     // ----------------------------------------------------------------------------
 
     // ---------------------  Code for the FormModal  ---------------------
-
+    const formModalId = "f" + _id               // useId not working
     var formModal
 
     function showFormModal() {
@@ -83,7 +87,7 @@ const Orders_tablerow = (props) => {
 
     function initFormModal() {
         // Get the modal
-        formModal = document.getElementById("formModal");
+        formModal = document.getElementById(formModalId);
 
     }
 
@@ -118,7 +122,7 @@ const Orders_tablerow = (props) => {
 
 
             {/* ------------------ User Details Modal ------------------ */}
-            <div id="userDetailsModal" class="custom_modal">
+            <div id={userModalId} class="custom_modal">
 
                 {/* <!-- Modal content --> */}
                 <div class="custom_modal-content">
@@ -128,12 +132,16 @@ const Orders_tablerow = (props) => {
                     </div>
 
                     <div class="custom_modal-body">
+                        {userDetails === null && (<p>Loading . . .</p>)}
+                        {userDetails === false && (<p>No KYC</p>)}
                         {userDetails &&
                             <table>
-                                <tr>
-                                    <th>Field</th>
-                                    <th>Value</th>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
                                         <td>Full Name</td>
@@ -237,7 +245,7 @@ const Orders_tablerow = (props) => {
 
 
             {/* ------------------ Form Details Modal ------------------ */}
-            <div id="formModal" class="custom_modal">
+            <div id={formModalId} class="custom_modal">
 
                 {/* <!-- Modal content --> */}
                 <div class="custom_modal-content">
